@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Xavier Rosario Torres — Tech Artist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EFE9DC;
+    --card: #F8F5EC;
+    --ink: #1B1B16;
+    --ink-soft: #55503F;
+    --line: #C9C0AC;
+    --accent: #E2542B;
+    --accent-2: #2F6E5C;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --paper: #17160F;
+      --card: #201F16;
+      --ink: #F1EDDF;
+      --ink-soft: #B9B29B;
+      --line: #3C3826;
+      --accent: #FF7A4A;
+      --accent-2: #6FB7A0;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #17160F;
+    --card: #201F16;
+    --ink: #F1EDDF;
+    --ink-soft: #B9B29B;
+    --line: #3C3826;
+    --accent: #FF7A4A;
+    --accent-2: #6FB7A0;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Space Grotesk", system-ui, sans-serif;
+    line-height: 1.5;
+  }
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  a { color: inherit; }
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  header.site {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .nav-row .brand { font-weight: 600; font-size: 1rem; text-decoration: none; }
+  .nav-links { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a {
+    text-decoration: none;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); border-color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--line);
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: center -1px;
+    background-repeat: repeat;
+    opacity: 1;
+  }
+  .hero-inner {
+    background: var(--paper);
+    padding: 8px 0;
+    padding-left: clamp(24px, 6vw, 72px);
+  }
+  .kicker {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    color: var(--accent-2);
+    margin: 0 0 14px;
+  }
+  .kicker::before { content: "// "; color: var(--line); }
+  h1.name {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 1.02;
+    margin: 0 0 6px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    animation: rise 0.6s ease-out both;
+  }
+  .role {
+    font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 22px;
+    animation: rise 0.6s 0.08s ease-out both;
+  }
+  .pitch {
+    max-width: 54ch;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    margin: 0 0 28px;
+    animation: rise 0.6s 0.16s ease-out both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .name, .role, .pitch { animation: none; }
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+  }
+  .chip {
+    border: 1px solid var(--line);
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: var(--ink-soft);
+  }
+
+  section { padding: 56px 0; }
+  section#work { border-bottom: 1px solid var(--line); }
+  h2.section-title {
+    font-size: 1.6rem;
+    margin: 0 0 8px;
+    font-weight: 600;
+  }
+  .section-sub {
+    color: var(--ink-soft);
+    margin: 0 0 32px;
+    max-width: 60ch;
+  }
+
+  /* PROJECT LOG */
+  details.entry {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--card);
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  details.entry[open] summary { border-bottom: 1px solid var(--line); }
+  summary.entry-head {
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  summary.entry-head::-webkit-details-marker { display: none; }
+  .entry-no {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.85rem;
+    color: var(--accent-2);
+    flex-shrink: 0;
+    width: 2.6em;
+  }
+  .entry-titles { flex: 1; min-width: 0; }
+  .entry-titles h3 { margin: 0 0 4px; font-size: 1.15rem; font-weight: 600; }
+  .entry-titles p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
+  .entry-caret {
+    font-family: "IBM Plex Mono", monospace;
+    color: var(--ink-soft);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  details[open] .entry-caret { transform: rotate(45deg); }
+  .entry-body { padding: 4px 20px 24px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--ink-soft);
+  }
+  .media-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .media-slot {
+    aspect-ratio: 4 / 3;
+    border: 1px dashed var(--line);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: var(--ink-soft);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 8px;
+  }
+  .media-slot .glyph { font-size: 1.3rem; }
+  .entry-desc { color: var(--ink); max-width: 62ch; }
+  .entry-desc p { margin: 0 0 12px; }
+  .entry-desc p:last-child { margin-bottom: 0; }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .portrait {
+    aspect-ratio: 1;
+    border: 1px dashed var(--line);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--ink-soft);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    text-align: center;
+    padding: 12px;
+  }
+  .about-text p { max-width: 62ch; }
+  .stat-block {
+    margin-top: 22px;
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+  .stat-block dt {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--accent-2);
+    margin: 0 0 6px;
+  }
+  .stat-block dd {
+    margin: 0 0 14px;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 560px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .portrait { width: 140px; }
+  }
+
+  /* CONTACT */
+  #contact { padding-bottom: 80px; }
+  .contact-list {
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+  .contact-list li {
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 4px;
+    text-decoration: none;
+    gap: 16px;
+  }
+  .contact-list a:hover .arrow, .contact-list a:focus-visible .arrow { transform: translateX(4px); }
+  .contact-label { font-weight: 600; }
+  .contact-value {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .arrow { transition: transform 0.15s ease; color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 20px 0 calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+  }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-row">
+    <a class="brand" href="#top">Xavier Rosario Torres</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="kicker">Portfolio / 2023 - 2026</p>
+      <h1 class="name">Xavier Rosario Torres</h1>
+      <p class="role">Tech Artist</p>
+      <p class="pitch">I design systems players want to explore and experiment with, keeping them coming back over and over. Eight years developing, programming, and modeling.</p>
+      <div class="hero-meta">
+        <span class="chip">Based in Orlando, FL</span>
+        <span class="chip">Open to part time roles</span>
+        <span class="chip">Unity</span>
+	<span class="chip">Unreal</span>
+	<span class="chip">Substance Painter</span>
+	<span class="chip">Blender</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <h2 class="section-title">Selected work</h2>
+      <p class="section-sub">Input here.</p>
+
+      <details class="entry" open>
+        <summary class="entry-head">
+          <span class="entry-no mono">01</span>
+          <span class="entry-titles">
+            <h3>Under Staffed</h3>
+            <p>Group of 7 · fast paced worker managment game</p>
+          </span>
+          <span class="entry-caret mono">+</span>
+        </summary>
+        <div class="entry-body">
+          <div class="tags">
+            <span class="tag">UI / UX Design</span>
+            <span class="tag">Unity / C#</span>
+          </div>
+          <div class="media-strip">
+            <div class="media-slot"><span class="glyph">▶</span>Replace with gameplay clip (.mp4)</div>
+            <div class="media-slot"><span class="glyph">▤</span>Replace with track screenshot</div>
+            <div class="media-slot"><span class="glyph">▤</span>Replace with UI screenshot</div>
+          </div>
+          <div class="entry-desc">
+            <p>A classic management where the customer manages an understaffed establishment in attempt to keep customers happy and avoid being fired.</p>
+            <p>I created the core worker system including dragging workers around, assigning workers to a given area, and all work station given functions. I also did the timer system, interaction system, UI scripted elements, and the door system.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="entry">
+        <summary class="entry-head">
+          <span class="entry-no mono">02</span>
+          <span class="entry-titles">
+            <h3>Station</h3>
+            <p>Solo Project · procedural extraction horror game focused on instilling fear via isolation even while playing with friends</p>
+          </span>
+          <span class="entry-caret mono">+</span>
+        </summary>
+        <div class="entry-body">
+          <div class="tags">
+            <span class="tag">Procedural Generation</span>
+            <span class="tag">UI / UX Design</span>
+            <span class="tag">Multiplayer</span>
+            <span class="tag">3D modeling</span>
+            <span class="tag">Lighting</span>
+            <span class="tag">Post Process</span>
+            <span class="tag">Unity / C#</span>
+          </div>
+          <div class="media-strip">
+            <div class="media-slot"><span class="glyph">▶</span>Replace with trailer (.mp4)</div>
+            <div class="media-slot"><span class="glyph">▤</span>Replace with co-op screenshot</div>
+            <div class="media-slot"><span class="glyph">▤</span>Replace with puzzle diagram</div>
+          </div>
+          <div class="entry-desc">
+            <p>A multiplayer procedural extraction horror game focused on innovating procedural generation and making players feel fear via isolation in a multiplayer environment.</p>
+            <p>This current project is still in development and is acting as my main portfolio piece. Taking inspiration from Alien Isolation, SOMA, and Portal 2 I wanted to design a game that could change the game design industry and innovate current elements that are in need of developing. This project as of this far has been completly my design and work.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="entry">
+        <summary class="entry-head">
+          <span class="entry-no mono">03</span>
+          <span class="entry-titles">
+            <h3>Shift</h3>
+            <p>Solo Project · gravity switching first person shooter with abilities</p>
+          </span>
+          <span class="entry-caret mono">+</span>
+        </summary>
+        <div class="entry-body">
+          <div class="tags">
+            <span class="tag">Unreal / Blueprints</span>
+            <span class="tag">Lighting</span>
+            <span class="tag">Level Design</span>
+          </div>
+          <div class="media-strip">
+            <div class="media-slot"><span class="glyph">▤</span>Replace with economy chart</div>
+            <div class="media-slot"><span class="glyph">▤</span>Replace with card screenshots</div>
+            <div class="media-slot"><span class="glyph">▶</span>Replace with UI flow clip</div>
+          </div>
+          <div class="entry-desc">
+            <p>Gravity switching first person movement shooter designed to be a casual arcade like experience. Players will jump and step on planes allowing them to switch gravity. With a variety of gamemodes this experience is designed to be a 3vs3 for constant action and strategy. Levels were designed in a way that allows players to be creative in their approach when facing enemy elements.</p>
+            <p>Designed a gravity orientation mechanic that uses volume triggers to change gravity surface. Designed a functional weapon and ablity system chosen at spawn. Developed and lit multiple levels in a way that allows any section of the map to look as if it were in a movie regardless of where the player was standing.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <h2 class="section-title">About</h2>
+      <div class="about-grid">
+        <div class="portrait">Replace with headshot</div>
+        <div class="about-text">
+          <p>I got into the inital phase of game design from a very young age, always interested in how the game ive come to know and love are built. I started off by watching tutorials and experimenting on my own via various projects. Most notable was Shift. Designing games that were out of scope taught me many lessons and the pillars of game design. Through my failures i've learned a great many things and actively apply them in which ever project im currently working on. I'm currently attending the University of Central Florida. At UCF the classes have helped give me a clearer perspective of what the industry may hold for me and hardships yet to come. Throughout my time at UCF the Tech Art pathway stood out to me as it acts like a bridge between modeling and programming. This role allows me actively do more for my team and really gave me a path that I can be passionate about. Using my new found experience and knowledge I expect to graduate in Spring 2027 with a bachelors degree in Digital Media.</p>
+          <p>Most recently i've been working on several projects for multiple classes including Workshop and Casual Game Production as well as my own passion project called Shift. I actively spend many hours modeling and programming these various projects. I always ensure to check in with leads before making changes and have a strict focus on creating, modular, optomized, clean, well commented code.</p>
+          <dl class="stat-block">
+            <dt>Tools</dt>
+            <dd>Unity, Unreal Engine, Unity, Blender, Substance Painter</dd>
+            <dt>Focus areas</dt>
+            <dd>Programming and implementing features, lighting, 3D prop modeling, asset creation.</dd>
+            <dt>Currently</dt>
+            <dd>Open to part-time  roles, remote or Orlando based</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-sub">Best way to reach me is email — I read everything.</p>
+      <ul class="contact-list">
+        <li>
+          <a href="mailto:xavierrosariotorres@gmail.com">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">xavierrosariotorres@gmail.com <span class="arrow">↗</span></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/xavier-rosario-techartist" target="_blank" rel="noopener">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">linkedin.com/in/xavier-rosario-techartist <span class="arrow">↗</span></span>
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" rel="noopener">
+            <span class="contact-label">Resume</span>
+            <span class="contact-value">Download PDF <span class="arrow">↗</span></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2023 - 2026 Xavier Rosario Torres</span>
+    <span>Back to top ↑</span>
+  </div>
+</footer>
+
+</body>
+</html>
