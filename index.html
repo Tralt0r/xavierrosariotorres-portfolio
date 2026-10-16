@@ -4,185 +4,198 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Xavier Rosario Torres | Technical Artist</title>
-<meta name="description" content="Portfolio of Xavier Rosario Torres, a technical artist in Orlando, FL working across gameplay programming, 3D modeling, lighting, and procedural systems in Unity and Unreal.">
+<meta name="description" content="Xavier Rosario Torres, technical artist in Orlando, FL. 250+ hand-made game assets, procedural generation, gameplay systems, and lighting in Unity and Unreal.">
 <meta property="og:title" content="Xavier Rosario Torres | Technical Artist">
-<meta property="og:description" content="Gameplay systems, procedural generation, lighting, and 3D art in Unity and Unreal.">
+<meta property="og:description" content="Systems, 250+ hand-made assets, procedural generation, and lighting in Unity and Unreal.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --paper: #EFE9DC; --card: #F8F5EC; --ink: #1B1B16; --ink-soft: #55503F;
-    --line: #C9C0AC; --accent: #C8431C; --accent-2: #2F6E5C;
-    box-sizing: border-box;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #17160F; --card: #201F16; --ink: #F1EDDF; --ink-soft: #B9B29B;
-      --line: #3C3826; --accent: #FF7A4A; --accent-2: #6FB7A0;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #17160F; --card: #201F16; --ink: #F1EDDF; --ink-soft: #B9B29B;
-    --line: #3C3826; --accent: #FF7A4A; --accent-2: #6FB7A0;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 64px); scroll-behavior: smooth; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Space Grotesk", system-ui, sans-serif; line-height: 1.55; }
-  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
-  a { color: inherit; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  :root { --paper:#EFE9DC; --card:#F8F5EC; --ink:#1B1B16; --ink-soft:#55503F; --line:#C9C0AC; --accent:#C8431C; --accent-2:#2F6E5C; --on-accent:#F8F5EC;
+    box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --paper:#17160F; --card:#201F16; --ink:#F1EDDF; --ink-soft:#B9B29B; --line:#3C3826; --accent:#FF7A4A; --accent-2:#6FB7A0; --on-accent:#17160F; } }
+  :root[data-theme="dark"] { --paper:#17160F; --card:#201F16; --ink:#F1EDDF; --ink-soft:#B9B29B; --line:#3C3826; --accent:#FF7A4A; --accent-2:#6FB7A0; --on-accent:#17160F; }
+  * { box-sizing:border-box; }
+  html { scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px); scroll-behavior:smooth; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:"Space Grotesk",system-ui,sans-serif; line-height:1.55; }
+  .mono { font-family:"IBM Plex Mono",ui-monospace,monospace; }
+  a { color:inherit; }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 24px; }
+  [hidden] { display:none !important; }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 
-  header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
-  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
-  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 880px; margin: 0 auto; }
-  .brand { font-weight: 600; text-decoration: none; }
-  .nav-links { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
-  .nav-links a { text-decoration: none; font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; color: var(--ink-soft); border-bottom: 1px solid transparent; padding-bottom: 2px; }
-  .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); border-color: var(--accent); }
+  header.site { position:sticky; top:env(safe-area-inset-top,0px); z-index:10; background:color-mix(in srgb,var(--paper) 92%,transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); }
+  body::before { content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--paper); }
+  .progress { position:absolute; left:0; bottom:-1px; height:2px; width:100%; background:var(--accent); transform:scaleX(0); transform-origin:left; }
+  .nav-row { display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:1040px; margin:0 auto; gap:16px; }
+  .brand { font-weight:600; text-decoration:none; }
+  .nav-links { display:flex; gap:20px; list-style:none; margin:0; padding:0; align-items:center; }
+  .nav-links a { text-decoration:none; font-family:"IBM Plex Mono",monospace; font-size:.85rem; color:var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:2px; }
+  .nav-links a:hover,.nav-links a:focus-visible { color:var(--ink); border-color:var(--accent); }
+  .nav-links a.nav-cta { color:var(--on-accent); background:var(--accent); padding:6px 12px; border-radius:3px; border:0; }
+  .nav-links a.nav-cta:hover { filter:brightness(1.08); }
 
-  .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--line); background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 28px 28px; background-position: center -1px; }
-  .hero-inner { background: var(--paper); padding-top: 8px; padding-bottom: 8px; padding-left: clamp(24px, 6vw, 72px); }
-  .kicker { font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; color: var(--accent-2); margin: 0 0 14px; }
-  .kicker::before { content: "// "; color: var(--ink-soft); }
-  h1.name { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.02; margin: 0 0 6px; font-weight: 700; letter-spacing: -0.01em; animation: rise 0.6s ease-out both; }
-  .role { font-size: clamp(1.1rem, 2.4vw, 1.4rem); color: var(--accent); font-weight: 600; margin: 0 0 22px; animation: rise 0.6s 0.08s ease-out both; }
-  .pitch { max-width: 56ch; color: var(--ink-soft); font-size: 1.05rem; margin: 0 0 28px; animation: rise 0.6s 0.16s ease-out both; }
-  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { .name, .role, .pitch { animation: none; } html { scroll-behavior: auto; } }
-  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; }
-  .chip { border: 1px solid var(--line); padding: 5px 10px; border-radius: 3px; color: var(--ink-soft); }
-  .chip.status { border-color: var(--accent-2); color: var(--accent-2); }
+  .hero { padding:56px 0 48px; border-bottom:1px solid var(--line); background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px); background-size:28px 28px; background-position:center -1px; overflow:hidden; }
+  .hero-grid { display:grid; grid-template-columns:1.05fr 1fr; gap:40px; align-items:center; }
+  .hero-text { background:var(--paper); padding:12px 20px 12px 0; }
+  .kicker { font-family:"IBM Plex Mono",monospace; font-size:.8rem; color:var(--accent-2); margin:0 0 14px; }
+  h1.name { font-size:clamp(2.4rem,5.4vw,3.9rem); line-height:1.02; margin:0 0 8px; font-weight:700; letter-spacing:-.01em; }
+  .role { font-size:clamp(1.1rem,2.2vw,1.35rem); color:var(--accent); font-weight:600; margin:0 0 18px; min-height:2.9em; }
+  .role .swap { display:inline-block; border-bottom:2px solid var(--accent); transition:opacity .25s ease,transform .25s ease; }
+  .role .swap.out { opacity:0; transform:translateY(6px); }
+  .pitch { color:var(--ink-soft); font-size:1.05rem; margin:0 0 22px; max-width:50ch; }
+  .pitch b { color:var(--ink); font-weight:600; }
+  .cta-row { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 26px; }
+  .btn { font-family:"IBM Plex Mono",monospace; font-size:.85rem; padding:11px 18px; border-radius:3px; border:1px solid var(--ink); text-decoration:none; transition:transform .15s ease,background .15s ease; }
+  .btn:hover { transform:translateY(-2px); }
+  .btn.primary { background:var(--accent); border-color:var(--accent); color:var(--on-accent); }
+  .btn.ghost:hover { background:var(--card); }
+  .counters { display:flex; gap:28px; flex-wrap:wrap; margin:0; }
+  .counters div { min-width:0; }
+  .counters dt { font-size:clamp(1.9rem,4vw,2.6rem); font-weight:700; line-height:1; color:var(--ink); font-variant-numeric:tabular-nums; }
+  .counters dd { margin:6px 0 0; font-size:.8rem; color:var(--ink-soft); max-width:17ch; }
+  .reel { position:relative; perspective:900px; }
+  .reel-frame { position:relative; display:block; border:1px solid var(--ink); border-radius:4px; overflow:hidden; background:#000; aspect-ratio:16/10; box-shadow:10px 10px 0 var(--accent-2); transition:transform .15s ease-out,box-shadow .2s ease; transform-style:preserve-3d; text-decoration:none; color:#fff; }
+  .reel-frame video { width:100%; height:100%; object-fit:cover; display:block; }
+  .reel-frame:hover { box-shadow:14px 14px 0 var(--accent-2); }
+  .reel-hud { position:absolute; left:12px; bottom:12px; right:12px; display:flex; justify-content:space-between; align-items:center; gap:8px; font-family:"IBM Plex Mono",monospace; font-size:.74rem; }
+  .reel-hud span { background:rgba(0,0,0,.65); padding:4px 8px; border-radius:2px; }
+  .rec { color:#FF7A4A; } .rec::before { content:"●"; margin-right:6px; animation:blink 1.4s steps(2,start) infinite; }
+  @keyframes blink { to { visibility:hidden; } }
+  .load-in { animation:rise .7s cubic-bezier(.2,.7,.2,1) both; animation-delay:calc(var(--d,0) * 1ms); }
+  @keyframes rise { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+  @media (max-width:860px) { .hero-grid { grid-template-columns:1fr; } .hero-text { padding-right:0; } .role { min-height:0; } }
 
-  section { padding: 56px 0; }
-  section#work { border-bottom: 1px solid var(--line); }
-  h2.section-title { font-size: 1.6rem; margin: 0 0 8px; font-weight: 600; }
-  .section-sub { color: var(--ink-soft); margin: 0 0 32px; max-width: 62ch; }
+  section { padding:56px 0; }
+  section.team { padding:36px 0; border-bottom:1px solid var(--line); background:var(--card); }
+  .stat-block { margin:0; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .stat-block dt { font-weight:600; margin:0 0 6px; color:var(--accent-2); }
+  .stat-block dd { margin:0; color:var(--ink-soft); font-size:.95rem; }
+  @media (max-width:700px) { .stat-block { grid-template-columns:1fr; gap:18px; } }
+  section#work { border-bottom:1px solid var(--line); }
+  h2.section-title { font-size:1.7rem; margin:0 0 8px; font-weight:600; }
+  .section-sub { color:var(--ink-soft); margin:0 0 28px; max-width:62ch; }
+  .filters { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px; }
+  .filter { font-family:"IBM Plex Mono",monospace; font-size:.8rem; padding:6px 14px; border:1px solid var(--line); border-radius:3px; background:transparent; color:var(--ink-soft); cursor:pointer; transition:all .15s ease; }
+  .filter:hover { color:var(--ink); border-color:var(--ink-soft); }
+  .filter[aria-pressed="true"] { background:var(--accent-2); border-color:var(--accent-2); color:var(--paper); }
 
-  details.entry { border: 1px solid var(--line); border-radius: 4px; background: var(--card); margin-bottom: 14px; overflow: hidden; }
-  details.entry[open] summary { border-bottom: 1px solid var(--line); }
-  summary.entry-head { list-style: none; cursor: pointer; padding: 18px 20px; display: flex; align-items: center; gap: 16px; }
-  summary.entry-head::-webkit-details-marker { display: none; }
-  .entry-no { font-size: 0.85rem; color: var(--accent-2); flex-shrink: 0; width: 2.6em; }
-  .media-slot img { cursor: zoom-in; }
-  dialog.lightbox { border: 0; padding: 0; margin: 0; width: 100%; height: 100%; max-width: 100vw; max-height: 100vh; background: transparent; color: #fff; }
-  dialog.lightbox::backdrop { background: rgba(0, 0, 0, 0.92); }
-  dialog.lightbox[open] { display: flex; align-items: center; justify-content: center; cursor: zoom-out; }
-  .lightbox img { max-width: 96vw; max-height: 92vh; width: auto; height: auto; object-fit: contain; border-radius: 2px; }
-  .lb-btn { position: fixed; background: rgba(0, 0, 0, 0.55); color: #fff; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 3px; width: 44px; height: 44px; font-size: 1.3rem; line-height: 1; cursor: pointer; font-family: "IBM Plex Mono", monospace; }
-  .lb-btn:hover, .lb-btn:focus-visible { background: rgba(255, 255, 255, 0.2); }
-  .lb-close { top: calc(12px + env(safe-area-inset-top, 0px)); right: 12px; }
-  .lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
-  .lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
-  [hidden] { display: none !important; }
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
-  .filter { font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; padding: 6px 14px; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--ink-soft); cursor: pointer; }
-  .filter:hover { color: var(--ink); border-color: var(--ink-soft); }
-  .filter[aria-pressed="true"] { background: var(--accent-2); border-color: var(--accent-2); color: var(--paper); }
-  .entry-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
-  details.entry { margin-bottom: 0; }
-  details.entry[open] { grid-column: 1 / -1; }
-  summary.entry-head { display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: "thumb thumb thumb" "no titles caret"; align-items: start; gap: 12px 10px; padding: 12px 14px 16px; }
-  .entry-thumb { grid-area: thumb; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--line); border-radius: 3px; display: block; }
-  .entry-no { grid-area: no; width: auto; }
-  .entry-titles { grid-area: titles; }
-  .entry-caret { grid-area: caret; }
-  details.entry[open] summary.entry-head { grid-template-columns: 104px auto 1fr auto; grid-template-areas: "thumb no titles caret"; align-items: center; padding: 14px 18px; }
-  @media (max-width: 820px) { .entry-list { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 520px) { .entry-list { grid-template-columns: 1fr; } details.entry[open] summary.entry-head { grid-template-columns: 72px auto 1fr auto; } }
-  .entry-titles { flex: 1; min-width: 0; }
-  .entry-titles h3 { margin: 0 0 4px; font-size: 1.15rem; font-weight: 600; }
-  .entry-titles p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
-  .entry-caret { color: var(--ink-soft); transition: transform 0.2s ease; flex-shrink: 0; }
-  details[open] .entry-caret { transform: rotate(45deg); }
-  .entry-body { padding: 20px 20px 24px; }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
-  .tag { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; padding: 3px 8px; border: 1px solid var(--line); border-radius: 3px; color: var(--ink-soft); }
-  .media-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 20px; }
-  .media-slot { aspect-ratio: 4 / 3; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--paper); }
-  .media-slot.full { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
-  .media-slot img, .media-slot video { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .entry-desc { max-width: 64ch; }
-  .entry-desc p { margin: 0 0 12px; }
-  .entry-desc p:last-child { margin-bottom: 0; }
-  .entry-desc strong { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; font-weight: 500; color: var(--accent-2); display: block; margin-bottom: 2px; }
+  .entry-list { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:start; }
+  details.entry { border:1px solid var(--line); border-radius:4px; background:var(--card); overflow:hidden; transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+  details.entry:not([open]):hover { transform:translateY(-4px); border-color:var(--accent); box-shadow:0 8px 0 -2px var(--accent); }
+  details.entry.pop { animation:rise .35s ease both; }
+  details.entry[open] { grid-column:1/-1; }
+  details.entry.feat { grid-column:1/-1; }
+  summary.entry-head { list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto; grid-template-areas:"thumb thumb" "titles caret"; gap:12px 10px; padding:12px 14px 16px; align-items:start; }
+  summary.entry-head::-webkit-details-marker { display:none; }
+  .entry-thumb { grid-area:thumb; width:100%; aspect-ratio:4/3; object-fit:cover; border:1px solid var(--line); border-radius:3px; display:block; transition:transform .4s ease; }
+  details.entry:not([open]):hover .entry-thumb { transform:scale(1.03); }
+  .thumb-clip { overflow:hidden; }
+  .entry-titles { grid-area:titles; min-width:0; }
+  .entry-titles h3 { margin:0 0 4px; font-size:1.15rem; font-weight:600; }
+  .entry-titles p { margin:0; color:var(--ink-soft); font-size:.92rem; }
+  .entry-caret { grid-area:caret; color:var(--ink-soft); transition:transform .2s ease; font-size:1.2rem; }
+  details[open] .entry-caret { transform:rotate(45deg); }
+  .feat-only { display:block; margin-top:10px; }
+  .badge { display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--on-accent); background:var(--accent); padding:2px 8px; border-radius:2px; margin-bottom:8px; }
+  .feat-blurb { display:block; font-size:1.05rem; color:var(--ink); max-width:44ch; }
+  details.entry.feat:not([open]) summary.entry-head { grid-template-columns:1.4fr 1fr auto; grid-template-areas:"thumb titles caret"; align-items:center; gap:24px; padding:14px 20px 14px 14px; }
+  details.entry.feat:not([open]) .entry-titles h3 { font-size:1.9rem; }
+  details.entry[open] summary.entry-head { grid-template-columns:104px 1fr auto; grid-template-areas:"thumb titles caret"; align-items:center; padding:14px 18px; border-bottom:1px solid var(--line); }
+  details.entry[open] .feat-only { display:none; }
+  @media (max-width:860px) { .entry-list { grid-template-columns:repeat(2,1fr); } details.entry.feat:not([open]) summary.entry-head { grid-template-columns:1fr auto; grid-template-areas:"thumb thumb" "titles caret"; align-items:start; gap:12px 10px; } }
+  @media (max-width:520px) { .entry-list { grid-template-columns:1fr; } details.entry[open] summary.entry-head { grid-template-columns:72px 1fr auto; } }
+  .entry-body { padding:20px 20px 24px; }
+  .tags { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px; }
+  .tag { font-family:"IBM Plex Mono",monospace; font-size:.72rem; padding:3px 8px; border:1px solid var(--line); border-radius:3px; color:var(--ink-soft); }
+  .tag:first-child { border-color:var(--accent-2); color:var(--accent-2); }
+  .media-strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin-bottom:20px; }
+  .media-slot { aspect-ratio:4/3; border:1px solid var(--line); border-radius:4px; overflow:hidden; background:var(--paper); }
+  .media-slot.full { grid-column:1/-1; aspect-ratio:16/9; }
+  .media-slot img,.media-slot video { width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease; }
+  .media-slot img { cursor:zoom-in; } .media-slot img:hover { transform:scale(1.06); }
+  details[open] .media-slot { animation:rise .45s ease both; animation-delay:calc(var(--i,0) * 45ms); }
+  .entry-desc { max-width:66ch; }
+  .entry-desc p { margin:0 0 14px; } .entry-desc p:last-child { margin-bottom:0; }
+  .entry-desc strong { font-family:"IBM Plex Mono",monospace; font-size:.78rem; font-weight:500; color:var(--accent-2); display:block; margin-bottom:2px; }
 
-  .about-grid { display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: start; }
-  .portrait { aspect-ratio: 1; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--card); }
-  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .about-text p { max-width: 64ch; margin-top: 0; }
-  section.snapshot { padding: 32px 0; border-bottom: 1px solid var(--line); background: var(--card); }
-  .stat-block { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .stat-block dt { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--accent-2); margin: 0 0 6px; }
-  .stat-block dd { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
-  @media (max-width: 700px) { .stat-block { grid-template-columns: 1fr; gap: 18px; } }
-  @media (max-width: 560px) { .about-grid { grid-template-columns: 1fr; } .portrait { width: 140px; } .nav-links { gap: 14px; } }
+  dialog.lightbox { border:0; padding:0; margin:0; width:100%; height:100%; max-width:100vw; max-height:100vh; background:transparent; color:#fff; }
+  dialog.lightbox::backdrop { background:rgba(0,0,0,.92); }
+  dialog.lightbox[open] { display:flex; align-items:center; justify-content:center; cursor:zoom-out; }
+  .lightbox img { max-width:96vw; max-height:92vh; width:auto; height:auto; object-fit:contain; border-radius:2px; }
+  .lb-btn { position:fixed; background:rgba(0,0,0,.55); color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:3px; width:44px; height:44px; font-size:1.3rem; line-height:1; cursor:pointer; }
+  .lb-btn:hover,.lb-btn:focus-visible { background:rgba(255,255,255,.2); }
+  .lb-close { top:calc(12px + env(safe-area-inset-top,0px)); right:12px; } .lb-prev { left:12px; top:50%; transform:translateY(-50%); } .lb-next { right:12px; top:50%; transform:translateY(-50%); }
 
-  #contact { padding-bottom: 80px; }
-  .contact-list { list-style: none; margin: 24px 0 0; padding: 0; border-top: 1px solid var(--line); }
-  .contact-list li { border-bottom: 1px solid var(--line); }
-  .contact-list a { display: flex; justify-content: space-between; align-items: center; padding: 16px 4px; text-decoration: none; gap: 16px; flex-wrap: wrap; }
-  .contact-list a:hover .arrow, .contact-list a:focus-visible .arrow { transform: translateX(4px); }
-  .contact-label { font-weight: 600; }
-  .contact-value { font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; overflow-wrap: anywhere; }
-  .arrow { transition: transform 0.15s ease; color: var(--accent); }
+  .about-grid { display:grid; grid-template-columns:200px 1fr; gap:32px; align-items:start; }
+  .portrait { aspect-ratio:1; border:1px solid var(--line); border-radius:4px; overflow:hidden; background:var(--card); }
+  .portrait img { width:100%; height:100%; object-fit:cover; display:block; }
+  .about-text p { max-width:64ch; margin-top:0; }
+  @media (max-width:560px) { .about-grid { grid-template-columns:1fr; } .portrait { width:140px; } .nav-links { gap:12px; } .nav-links .hide-s { display:none; } }
 
-  footer { border-top: 1px solid var(--line); padding: 20px 0 calc(20px + env(safe-area-inset-bottom, 0px)); }
-  footer .wrap { display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--ink-soft); }
-  footer a { text-decoration: none; }
-  footer a:hover { color: var(--ink); }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  #contact { padding-bottom:80px; }
+  .contact-list { list-style:none; margin:24px 0 0; padding:0; border-top:1px solid var(--line); }
+  .contact-list li { border-bottom:1px solid var(--line); }
+  .contact-list a { display:flex; justify-content:space-between; align-items:center; padding:16px 4px; text-decoration:none; gap:16px; flex-wrap:wrap; }
+  .contact-list a:hover .arrow,.contact-list a:focus-visible .arrow { transform:translateX(4px); }
+  .contact-label { font-weight:600; }
+  .contact-value { font-family:"IBM Plex Mono",monospace; font-size:.85rem; color:var(--ink-soft); display:flex; align-items:center; gap:8px; overflow-wrap:anywhere; }
+  .arrow { transition:transform .15s ease; color:var(--accent); display:inline-block; }
+  footer { border-top:1px solid var(--line); padding:20px 0 calc(20px + env(safe-area-inset-bottom,0px)); }
+  footer .wrap { display:flex; justify-content:space-between; font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--ink-soft); }
+  footer a { text-decoration:none; } footer a:hover { color:var(--ink); }
+  @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } html { scroll-behavior:auto; } }
+
 </style>
 </head>
 <body>
-
 <header class="site">
   <div class="nav-row">
     <a class="brand" href="#top">Xavier Rosario Torres</a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li class="hide-s"><a href="#about">About</a></li>
+      <li class="hide-s"><a href="#contact">Contact</a></li>
+      <li><a class="nav-cta" href="Rosario_Resume.pdf" download="Rosario_Resume.pdf">Resume</a></li>
     </ul>
   </div>
+  <div class="progress" id="progress"></div>
 </header>
 
 <main id="top">
   <section class="hero">
-    <div class="wrap hero-inner">
-      <p class="kicker">Portfolio / 2026</p>
-      <h1 class="name">Xavier Rosario Torres</h1>
-      <p class="role">Technical Artist</p>
-      <p class="pitch">I build the systems, tools, and visuals that make a game worth poking at. Eight years of programming, modeling, and lighting, all aimed at giving players something to experiment with and a reason to come back.</p>
-      <div class="hero-meta">
-        <span class="chip status">Open to part-time and full-time roles</span>
-        <span class="chip">Orlando, FL / remote</span>
-        <span class="chip">Unity</span>
-        <span class="chip">Unreal Engine</span>
-        <span class="chip">C# / Blueprints</span>
-        <span class="chip">Blender</span>
-        <span class="chip">Substance Painter</span>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="kicker load-in" style="--d:0">Technical Artist · Unity &amp; Unreal · Orlando, FL / remote</p>
+        <h1 class="name load-in" style="--d:80">Xavier Rosario Torres</h1>
+        <p class="role load-in" style="--d:160">I build the <span class="swap" id="swap">systems</span> players remember.</p>
+        <p class="pitch load-in" style="--d:240">Most people pick a lane. I work the whole pipeline: gameplay code, modeling, texturing, and lighting. My solo horror game <b>Station</b> has <b>250+ assets I modeled, UV'd, and textured myself</b>, a procedural level generator, and multiplayer, all in one build.</p>
+        <div class="cta-row load-in" style="--d:320">
+          <a class="btn primary" href="#station" data-open="station">Explore Station</a>
+          <a class="btn ghost" href="Rosario_Resume.pdf" download="Rosario_Resume.pdf">Download resume</a>
+          <a class="btn ghost" href="mailto:xavierrosariotorres@gmail.com">Email me</a>
+        </div>
+        <dl class="counters load-in" style="--d:400">
+          <div><dt><span data-count="250" data-suffix="+">250+</span></dt><dd>Station assets modeled, UV'd, and textured</dd></div>
+          <div><dt><span data-count="8">8</span></dt><dd>Years programming, modeling, and lighting</dd></div>
+          <div><dt><span data-count="5">5</span></dt><dd>Games built, solo and on teams</dd></div>
+        </dl>
+      </div>
+      <div class="reel load-in" style="--d:300">
+        <a class="reel-frame" id="reel" href="#station" data-open="station" aria-label="Open the Station project">
+          <video src="station-programming-a.mp4" autoplay muted loop playsinline preload="auto"></video>
+          <div class="reel-hud"><span class="rec">Station, live from the build</span><span>Click to open</span></div>
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="snapshot" aria-label="Skills and availability">
+  <section class="team" aria-label="What I bring to a team">
     <div class="wrap">
       <dl class="stat-block">
-        <div>
-          <dt>Tools</dt>
-          <dd>Unity, Unreal Engine, Blender, Substance Painter</dd>
-        </div>
-        <div>
-          <dt>Focus areas</dt>
-          <dd>Gameplay and systems programming, lighting, 3D prop modeling, asset creation</dd>
-        </div>
-        <div>
-          <dt>Currently</dt>
-          <dd>Open to part-time and full-time roles, remote or Orlando-based</dd>
-        </div>
+        <div><dt>Full-pipeline art</dt><dd>Model, UV, texture, and light an asset, then script how it behaves. One person, no handoff gaps.</dd></div>
+        <div><dt>Systems built to be shared</dt><dd>Modular, optimized, well-commented code that teammates can extend without me in the room.</dd></div>
+        <div><dt>Scope-smart and lead-friendly</dt><dd>I lock the core mechanic early, cut what doesn't serve it, and check in with leads before changing anything.</dd></div>
       </dl>
     </div>
   </section>
@@ -190,8 +203,7 @@
   <section id="work">
     <div class="wrap">
       <h2 class="section-title">Selected work</h2>
-      <p class="section-sub">Team projects I helped ship, solo projects I built end to end, and prototypes I used to test ideas. Each entry says what I owned and what it taught me.</p>
-
+      <p class="section-sub">Start with Station, my flagship. The rest show range: team projects I helped ship, solo games built end to end, and experiments where I test new ideas.</p>
       <div class="filters" role="group" aria-label="Filter projects by discipline">
         <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
         <button type="button" class="filter" data-filter="design" aria-pressed="false">Design</button>
@@ -199,26 +211,14 @@
         <button type="button" class="filter" data-filter="programming" aria-pressed="false">Programming</button>
       </div>
       <div class="entry-list">
-      <details class="entry" data-cats="design modeling programming">
+      <details class="entry feat" id="station" data-cats="design modeling programming">
         <summary class="entry-head">
-          <span class="entry-no mono">01</span>
           <img class="entry-thumb" src="station-art-a.png" alt="" loading="lazy">
-          <span class="entry-titles">
-            <h3>Station</h3>
-            <p>Solo project · procedural multiplayer extraction horror, in development</p>
-          </span>
+          <span class="entry-titles"><h3>Station</h3><p>Solo project · procedural multiplayer extraction horror · in development</p><span class="feat-only"><span class="badge">Featured · main project</span><span class="feat-blurb">A procedurally generated station, 250+ hand-made assets, and a multiplayer horror loop built to make you feel alone.</span></span></span>
           <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
-          <div class="tags">
-            <span class="tag">Procedural Generation</span>
-            <span class="tag">Multiplayer</span>
-            <span class="tag">3D Modeling</span>
-            <span class="tag">Lighting</span>
-            <span class="tag">Post Process</span>
-            <span class="tag">UI / UX</span>
-            <span class="tag">Unity / C#</span>
-          </div>
+          <div class="tags"><span class="tag">Procedural Generation</span><span class="tag">Multiplayer</span><span class="tag">250+ Models UV'd & Textured</span><span class="tag">Lighting</span><span class="tag">Post Process</span><span class="tag">UI / UX</span><span class="tag">Unity / C#</span></div>
           <div class="media-strip">
             <div class="media-slot full"><video src="station-programming-a.mp4" controls muted playsinline preload="metadata" aria-label="Station procedural generation and gameplay demo"></video></div>
             <div class="media-slot"><img src="station-art-a.png" alt="Station environment, image 1" loading="lazy"></div>
@@ -231,30 +231,17 @@
             <div class="media-slot"><img src="station-art-h.png" alt="Station environment, image 8" loading="lazy"></div>
             <div class="media-slot"><img src="station-art-i.png" alt="Station environment, image 9" loading="lazy"></div>
           </div>
-          <div class="entry-desc">
-            <p><strong>The game</strong>A multiplayer extraction horror game built around procedural generation. The goal is dread through isolation: even with friends in the same session, the station should make you feel alone.</p>
-            <p><strong>Why it matters</strong>This is my main portfolio piece and still in active development. I drew on Alien: Isolation, SOMA, and Portal 2 and set out to push on parts of procedural level design and multiplayer horror that I think are underexplored.</p>
-            <p><strong>My role</strong>Everything: design, programming, 3D modeling, lighting, post-processing, and UI.</p>
-          </div>
+          <div class="entry-desc"><p><strong>The game</strong>A multiplayer extraction horror game built on procedural generation. The goal is dread through isolation: even with friends in the same session, the station should make you feel alone.</p><p><strong>The art</strong>I modeled, UV-unwrapped, and textured more than 250 assets by hand, then lit and post-processed every space so the mood lands the moment a player steps in. Hero pieces and background clutter get the same care, because that is what makes a corridor feel lived in.</p><p><strong>The tech</strong>Procedural level generation and multiplayer horror are two areas I think are underexplored, so I am pushing on both at once. Alien: Isolation, SOMA, and Portal 2 set the bar I am building toward.</p><p><strong>My role</strong>Everything: design, programming, 3D modeling, UV and texturing, lighting, post-processing, and UI. This is my main portfolio piece and it is in active development.</p></div>
         </div>
       </details>
-
-      <details class="entry" data-cats="design programming">
+      <details class="entry" id="shift" data-cats="design programming">
         <summary class="entry-head">
-          <span class="entry-no mono">02</span>
           <img class="entry-thumb" src="shift-art-a.png" alt="" loading="lazy">
-          <span class="entry-titles">
-            <h3>Shift</h3>
-            <p>Solo project · gravity-switching first-person arena shooter</p>
-          </span>
+          <span class="entry-titles"><h3>Shift</h3><p>Solo project · gravity-switching first-person arena shooter</p></span>
           <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
-          <div class="tags">
-            <span class="tag">Unreal / Blueprints</span>
-            <span class="tag">Lighting</span>
-            <span class="tag">Level Design</span>
-          </div>
+          <div class="tags"><span class="tag">Unreal / Blueprints</span><span class="tag">Lighting</span><span class="tag">Level Design</span></div>
           <div class="media-strip">
             <div class="media-slot full"><video src="shift-art-i.mp4" controls muted playsinline preload="metadata" aria-label="Shift gameplay and level showcase"></video></div>
             <div class="media-slot"><img src="shift-art-a.png" alt="Shift level, image 1" loading="lazy"></div>
@@ -266,30 +253,17 @@
             <div class="media-slot"><img src="shift-art-g.png" alt="Shift level, image 7" loading="lazy"></div>
             <div class="media-slot"><img src="shift-art-h.png" alt="Shift level, image 8" loading="lazy"></div>
           </div>
-          <div class="entry-desc">
-            <p><strong>The game</strong>A casual, arcade-style movement shooter where stepping onto a plane flips your gravity. Built for 3v3 play across several game modes, with levels designed so players can find creative routes through fights.</p>
-            <p><strong>My role</strong>I designed the gravity orientation mechanic, which uses volume triggers to reorient players to new surfaces. I also built a weapon and ability system that players choose at spawn, then designed and lit multiple levels so every angle of the map reads cinematically, whichever way "up" happens to be.</p>
-            <p><strong>What it taught me</strong>Shift was my first project that outgrew its scope. Cutting features, locking down a core mechanic, and planning around constraints are lessons I now apply from the first day of every project.</p>
-          </div>
+          <div class="entry-desc"><p><strong>The game</strong>A fast, arcade-style movement shooter where stepping onto a plane flips your gravity. Built for 3v3 play across several modes, with levels designed so players keep finding creative routes through a fight.</p><p><strong>My role</strong>I designed the gravity mechanic, using volume triggers to reorient players onto new surfaces, and built a weapon and ability system players choose at spawn. I also designed and lit multiple levels so every angle reads cinematically, whichever way up happens to be.</p><p><strong>What it taught me</strong>Shift was my first project to outgrow its scope. Cutting features, locking down a core mechanic, and planning around constraints are habits I now bring to day one of every project.</p></div>
         </div>
       </details>
-
-      <details class="entry" data-cats="design programming">
+      <details class="entry" id="understaffed" data-cats="design programming">
         <summary class="entry-head">
-          <span class="entry-no mono">03</span>
           <img class="entry-thumb" src="understaffed-art-a.png" alt="" loading="lazy">
-          <span class="entry-titles">
-            <h3>Under Staffed</h3>
-            <p>Team of 7 · fast-paced workplace management game</p>
-          </span>
+          <span class="entry-titles"><h3>Under Staffed</h3><p>Team of 7 · fast-paced workplace management game</p></span>
           <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
-          <div class="tags">
-            <span class="tag">Gameplay Programming</span>
-            <span class="tag">UI / UX</span>
-            <span class="tag">Unity / C#</span>
-          </div>
+          <div class="tags"><span class="tag">Gameplay Programming</span><span class="tag">UI / UX</span><span class="tag">Unity / C#</span></div>
           <div class="media-strip">
             <div class="media-slot full"><video src="understaffed-programming-a.mp4" controls muted playsinline preload="metadata" aria-label="Under Staffed gameplay and systems demo"></video></div>
             <div class="media-slot"><img src="understaffed-art-a.png" alt="Under Staffed concept art, image 1" loading="lazy"></div>
@@ -297,29 +271,17 @@
             <div class="media-slot"><img src="understaffed-art-c.png" alt="Under Staffed concept art, image 3" loading="lazy"></div>
             <div class="media-slot"><img src="understaffed-art-d.png" alt="Under Staffed concept art, image 4" loading="lazy"></div>
           </div>
-          <div class="entry-desc">
-            <p><strong>The game</strong>You run a chronically understaffed business and have to juggle workers, stations, and customers to keep everyone happy and keep your job.</p>
-            <p><strong>My role</strong>I built the core worker system: drag-and-drop worker control, area assignment, and the behavior for every work station. I also owned the timer system, the interaction system, scripted UI elements, and the door system. These are the systems the whole game loop depends on, so I wrote them to be modular enough for teammates to build on.</p>
-          </div>
+          <div class="entry-desc"><p><strong>The game</strong>You run a chronically understaffed business and juggle workers, stations, and customers to keep everyone happy and keep your job.</p><p><strong>My role</strong>I built the core worker system the whole game loop rests on: drag-and-drop worker control, area assignment, and behavior for every work station. I also owned the timer, interaction, door, and scripted UI systems, and wrote them modular so six teammates could build on top of them.</p></div>
         </div>
       </details>
-
-      <details class="entry" data-cats="programming">
+      <details class="entry" id="soundsmith" data-cats="programming">
         <summary class="entry-head">
-          <span class="entry-no mono">04</span>
           <img class="entry-thumb" src="soundsmith-art-a.png" alt="" loading="lazy">
-          <span class="entry-titles">
-            <h3>Sound Smith</h3>
-            <p>Small team · action rhythm game</p>
-          </span>
+          <span class="entry-titles"><h3>Sound Smith</h3><p>Small team · action rhythm game</p></span>
           <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
-          <div class="tags">
-            <span class="tag">Gameplay Programming</span>
-            <span class="tag">Audio Implementation</span>
-            <span class="tag">Unity / C#</span>
-          </div>
+          <div class="tags"><span class="tag">Gameplay Programming</span><span class="tag">Audio Implementation</span><span class="tag">Unity / C#</span></div>
           <div class="media-strip">
             <div class="media-slot full"><video src="soundsmith-programming-a.mp4" controls muted playsinline preload="metadata" aria-label="Sound Smith gameplay and systems demo"></video></div>
             <div class="media-slot"><img src="soundsmith-art-a.png" alt="Sound Smith concept art, image 1" loading="lazy"></div>
@@ -327,30 +289,17 @@
             <div class="media-slot"><img src="soundsmith-art-c.png" alt="Sound Smith concept art, image 3" loading="lazy"></div>
             <div class="media-slot"><img src="soundsmith-art-d.png" alt="Sound Smith concept art, image 4" loading="lazy"></div>
           </div>
-          <div class="entry-desc">
-            <p><strong>The game</strong>Players collect ingredients through rhythm minigames, then fight bosses to earn the right to return home and craft legendary instruments.</p>
-            <p><strong>My role</strong>I built the workstation randomization system, the inspect system, the save system, and the boss battle logic. I also updated prefab logic across the project, implemented about 90% of the sound effects, and added an in-world shelf. Since the game runs on rhythm, I treated audio implementation as gameplay work rather than polish.</p>
-          </div>
+          <div class="entry-desc"><p><strong>The game</strong>Players collect ingredients through rhythm minigames, then fight bosses to earn the right to return home and craft legendary instruments.</p><p><strong>My role</strong>I built the workstation randomization, inspect, and save systems and the boss battle logic. I also updated prefab logic across the project and implemented about 90% of the sound effects. In a rhythm game, audio is gameplay, so I treated it that way.</p></div>
         </div>
       </details>
-
-      <details class="entry" data-cats="programming">
+      <details class="entry" id="cyber" data-cats="programming">
         <summary class="entry-head">
-          <span class="entry-no mono">05</span>
           <img class="entry-thumb" src="cs_art_a.png" alt="" loading="lazy">
-          <span class="entry-titles">
-            <h3>Cyber Scanners</h3>
-            <p>Solo project · tower defense game</p>
-          </span>
+          <span class="entry-titles"><h3>Cyber Scanners</h3><p>Solo project · tower defense game</p></span>
           <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
-          <div class="tags">
-            <span class="tag">Gameplay Programming</span>
-            <span class="tag">UI / UX</span>
-            <span class="tag">2D Art</span>
-            <span class="tag">Unity / C#</span>
-          </div>
+          <div class="tags"><span class="tag">Gameplay Programming</span><span class="tag">UI / UX</span><span class="tag">2D Art</span><span class="tag">Unity / C#</span></div>
           <div class="media-strip">
             <div class="media-slot full"><video src="cs_programming_a.mp4" controls muted playsinline preload="metadata" aria-label="Cyber Scanners gameplay demo"></video></div>
             <div class="media-slot"><img src="cs_art_a.png" alt="Cyber Scanners art, image 1" loading="lazy"></div>
@@ -361,31 +310,17 @@
             <div class="media-slot"><img src="cs_art_f.png" alt="Cyber Scanners art, image 6" loading="lazy"></div>
             <div class="media-slot"><img src="cs_art_g.png" alt="Cyber Scanners art, image 7" loading="lazy"></div>
           </div>
-          <div class="entry-desc">
-            <p><strong>The game</strong>Players defend against escalating waves of enemy types. They unlock and upgrade towers to stop enemies before they reach the end of the path.</p>
-            <p><strong>My role</strong>Everything: design, programming, UI, and 2D art.</p>
-          </div>
+          <div class="entry-desc"><p><strong>The game</strong>Escalating waves of enemy types push toward the end of the path. Players unlock and upgrade towers to stop them first.</p><p><strong>My role</strong>Everything: design, programming, UI, and 2D art, from the first prototype to a finished loop.</p></div>
         </div>
       </details>
-
-      <details class="entry" data-cats="modeling programming">
+      <details class="entry" id="misc" data-cats="modeling programming">
         <summary class="entry-head">
-          <span class="entry-no mono">06</span>
           <img class="entry-thumb" src="misc-file-a.png" alt="" loading="lazy">
-          <span class="entry-titles">
-            <h3>Miscellaneous</h3>
-            <p>Solo experiments · models, animation, texturing, VFX, and code</p>
-          </span>
+          <span class="entry-titles"><h3>Miscellaneous</h3><p>Solo experiments · models, animation, texturing, VFX, and code</p></span>
           <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
-          <div class="tags">
-            <span class="tag">3D Modeling</span>
-            <span class="tag">Texturing</span>
-            <span class="tag">Animation</span>
-            <span class="tag">VFX</span>
-            <span class="tag">Programming</span>
-          </div>
+          <div class="tags"><span class="tag">3D Modeling</span><span class="tag">Texturing</span><span class="tag">Animation</span><span class="tag">VFX</span><span class="tag">Programming</span></div>
           <div class="media-strip">
             <div class="media-slot full"><video src="misc-file-f.mp4" controls muted playsinline preload="metadata" aria-label="Miscellaneous work, video 1"></video></div>
             <div class="media-slot"><img src="misc-file-a.png" alt="Miscellaneous work, image 1" loading="lazy"></div>
@@ -400,9 +335,7 @@
             <div class="media-slot"><img src="misc-file-k.png" alt="Miscellaneous work, image 8" loading="lazy"></div>
             <div class="media-slot"><img src="misc-file-l.png" alt="Miscellaneous work, image 9" loading="lazy"></div>
           </div>
-          <div class="entry-desc">
-            <p>A collection of small studies that don't fit a single project: 3D models, animation, texturing, VFX, and programming experiments, all made by me. This is where I try new techniques before they show up in bigger work.</p>
-          </div>
+          <div class="entry-desc"><p>Small studies that do not fit a single project: models, animation, texturing, VFX, and code. This is my testing ground, where new techniques get broken and rebuilt before they show up in bigger work.</p></div>
         </div>
       </details>
       </div>
@@ -415,9 +348,9 @@
       <div class="about-grid">
         <div class="portrait"><img src="headshot.jpg" alt="Portrait of Xavier Rosario Torres"></div>
         <div class="about-text">
-          <p>I've been taking games apart to see how they work since I was young. I started with tutorials and solo experiments, and the project that taught me the most was Shift. It was far out of scope, and that gap taught me what actually matters in game design: a clear core mechanic, honest scoping, and finishing what you start. I apply those lessons to every project now.</p>
-          <p>I'm a Digital Media student at the University of Central Florida, graduating in Spring 2027. Along the way I found technical art, which sits between modeling and programming and lets me do the most for a team. I'm happiest when I can build the system, model the assets, and light the scene so it all works together.</p>
-          <p>Right now I'm working on team projects for Workshop and Casual Game Production alongside my own project, Station. I check in with leads before making changes, and I write modular, optimized, well-commented code so teammates can pick it up without me.</p>
+          <p>I have been taking games apart to see how they work since I was young. Tutorials and solo experiments got me started, and Shift, a project far out of scope, taught me what matters most: a clear core mechanic, honest scoping, and finishing what you start. I bring that to every project now.</p>
+          <p>I am a Digital Media student at the University of Central Florida, graduating Spring 2027. Technical art is where I found my place: it sits between modeling and programming, and it lets me do the most for a team. I am happiest building the system, modeling the assets, and lighting the scene so it all works together.</p>
+          <p>Right now I am working on team projects for Workshop and Casual Game Production alongside Station, my own game. I write modular, optimized, well-commented code so teammates can pick it up without me, and I am looking for a team that cares about craft as much as I do.</p>
         </div>
       </div>
     </div>
@@ -425,55 +358,19 @@
 
   <section id="contact">
     <div class="wrap">
-      <h2 class="section-title">Contact</h2>
-      <p class="section-sub">Email is the best way to reach me. I read and answer every message.</p>
+      <h2 class="section-title">Let's build something</h2>
+      <p class="section-sub">Open to part-time and full-time roles, remote or Orlando-based. Email is the fastest way to reach me, and I answer every message.</p>
       <ul class="contact-list">
-        <li>
-          <a href="mailto:xavierrosariotorres@gmail.com">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">xavierrosariotorres@gmail.com <span class="arrow" aria-hidden="true">↗</span></span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/xavier-rosario-techartist" target="_blank" rel="noopener">
-            <span class="contact-label">LinkedIn</span>
-            <span class="contact-value">linkedin.com/in/xavier-rosario-techartist <span class="arrow" aria-hidden="true">↗</span></span>
-          </a>
-        </li>
-        <li>
-          <a href="Rosario_Resume.pdf" download="Rosario_Resume.pdf">
-            <span class="contact-label">Resume</span>
-            <span class="contact-value">Download PDF <span class="arrow" aria-hidden="true">↓</span></span>
-          </a>
-        </li>
+        <li><a href="mailto:xavierrosariotorres@gmail.com"><span class="contact-label">Email</span><span class="contact-value">xavierrosariotorres@gmail.com <span class="arrow" aria-hidden="true">↗</span></span></a></li>
+        <li><a href="https://www.linkedin.com/in/xavier-rosario-techartist" target="_blank" rel="noopener"><span class="contact-label">LinkedIn</span><span class="contact-value">linkedin.com/in/xavier-rosario-techartist <span class="arrow" aria-hidden="true">↗</span></span></a></li>
+        <li><a href="Rosario_Resume.pdf" download="Rosario_Resume.pdf"><span class="contact-label">Resume</span><span class="contact-value">Download PDF <span class="arrow" aria-hidden="true">↓</span></span></a></li>
       </ul>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>©2026 Xavier Rosario Torres</span>
-    <a href="#top">Back to top ↑</a>
-  </div>
-</footer>
+<footer><div class="wrap"><span>©2026 Xavier Rosario Torres</span><a href="#top">Back to top ↑</a></div></footer>
 
-<script>
-  (function () {
-    var buttons = document.querySelectorAll('.filter');
-    var entries = document.querySelectorAll('details.entry');
-    buttons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var f = btn.getAttribute('data-filter');
-        buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
-        entries.forEach(function (e) {
-          var show = f === 'all' || e.getAttribute('data-cats').split(' ').indexOf(f) !== -1;
-          e.hidden = !show;
-        });
-      });
-    });
-  })();
-</script>
 <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
   <button type="button" class="lb-btn lb-close" aria-label="Close image">✕</button>
   <button type="button" class="lb-btn lb-prev" aria-label="Previous image">‹</button>
@@ -481,36 +378,77 @@
   <button type="button" class="lb-btn lb-next" aria-label="Next image">›</button>
 </dialog>
 <script>
-  (function () {
-    var dlg = document.getElementById('lightbox');
-    var big = dlg.querySelector('img');
-    var group = [], idx = 0;
-    function show(i) {
-      idx = (i + group.length) % group.length;
-      big.src = group[idx].currentSrc || group[idx].src;
-      big.alt = group[idx].alt;
-    }
-    function open(img) {
-      group = Array.prototype.slice.call(img.closest('.media-strip').querySelectorAll('img'));
-      show(group.indexOf(img));
-      dlg.showModal();
-    }
-    document.querySelectorAll('.media-slot img').forEach(function (img) {
-      img.tabIndex = 0;
-      img.setAttribute('role', 'button');
-      img.addEventListener('click', function () { open(img); });
-      img.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // rotating discipline word
+  var swap = document.getElementById('swap'), words = ['systems', 'worlds', 'lighting', 'assets', 'tools'], w = 0;
+  if (swap && !reduce) setInterval(function () {
+    swap.classList.add('out');
+    setTimeout(function () { w = (w + 1) % words.length; swap.textContent = words[w]; swap.classList.remove('out'); }, 260);
+  }, 2200);
+  // count-up stats
+  document.querySelectorAll('[data-count]').forEach(function (el) {
+    var end = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix') || '';
+    if (reduce) { el.textContent = end + suf; return; }
+    var t0 = performance.now(), dur = 1600;
+    (function tick(t) {
+      var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(end * e) + suf;
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  });
+  // hero reel: tilt, reduced motion, click opens Station
+  var reel = document.getElementById('reel'), rv = reel && reel.querySelector('video');
+  if (rv && reduce) { rv.removeAttribute('autoplay'); rv.pause(); rv.setAttribute('controls', ''); }
+  if (reel && !reduce) {
+    reel.addEventListener('mousemove', function (e) {
+      var r = reel.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      reel.style.transform = 'rotateY(' + (x * 7) + 'deg) rotateX(' + (-y * 7) + 'deg)';
+    });
+    reel.addEventListener('mouseleave', function () { reel.style.transform = ''; });
+  }
+  function openEntry(id) { var d = document.getElementById(id); if (d) { d.open = true; } }
+  document.querySelectorAll('[data-open]').forEach(function (a) {
+    a.addEventListener('click', function () { openEntry(a.getAttribute('data-open')); });
+  });
+  // scroll progress
+  var bar = document.getElementById('progress');
+  function prog() { var h = document.documentElement; bar.style.transform = 'scaleX(' + (h.scrollTop / Math.max(h.scrollHeight - h.clientHeight, 1)) + ')'; }
+  addEventListener('scroll', prog, { passive: true }); prog();
+  // filters
+  var buttons = document.querySelectorAll('.filter'), entries = document.querySelectorAll('details.entry');
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.getAttribute('data-filter');
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      entries.forEach(function (e, i) {
+        var show = f === 'all' || e.getAttribute('data-cats').split(' ').indexOf(f) !== -1;
+        e.hidden = !show; e.classList.remove('pop');
+        if (show) { void e.offsetWidth; e.style.animationDelay = (i * 50) + 'ms'; e.classList.add('pop'); }
       });
     });
-    dlg.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
-    dlg.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
-    dlg.addEventListener('click', function () { dlg.close(); });
-    dlg.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowLeft') show(idx - 1);
-      if (e.key === 'ArrowRight') show(idx + 1);
+  });
+  // stagger media on open
+  entries.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (d.open) d.querySelectorAll('.media-slot').forEach(function (s, i) { s.style.setProperty('--i', i); });
     });
-  })();
+  });
+  // lightbox
+  var dlg = document.getElementById('lightbox'), big = dlg.querySelector('img'), group = [], idx = 0;
+  function show(i) { idx = (i + group.length) % group.length; big.src = group[idx].currentSrc || group[idx].src; big.alt = group[idx].alt; }
+  function openLb(img) { group = [].slice.call(img.closest('.media-strip').querySelectorAll('img')); show(group.indexOf(img)); dlg.showModal(); }
+  document.querySelectorAll('.media-slot img').forEach(function (img) {
+    img.tabIndex = 0; img.setAttribute('role', 'button');
+    img.addEventListener('click', function () { openLb(img); });
+    img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(img); } });
+  });
+  dlg.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
+  dlg.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
+  dlg.addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') show(idx - 1); if (e.key === 'ArrowRight') show(idx + 1); });
+})();
+
 </script>
 </body>
 </html>
