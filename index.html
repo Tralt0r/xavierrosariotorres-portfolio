@@ -113,7 +113,7 @@
   .media-slot { aspect-ratio:4/3; border:1px solid var(--line); border-radius:4px; overflow:hidden; background:var(--paper); }
   .media-slot.full { grid-column:1/-1; aspect-ratio:16/9; }
   .media-slot img,.media-slot video { width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease; }
-  .media-slot img { cursor:zoom-in; } .media-slot img:hover { transform:scale(1.06); }
+  .media-slot img { cursor:pointer; } .media-slot img:hover { transform:scale(1.06); }
   details[open] .media-slot { animation:rise .45s ease both; animation-delay:calc(var(--i,0) * 45ms); }
   .entry-desc { max-width:66ch; }
   .entry-desc p { margin:0 0 14px; } .entry-desc p:last-child { margin-bottom:0; }
@@ -121,7 +121,7 @@
 
   dialog.lightbox { border:0; padding:0; margin:0; width:100%; height:100%; max-width:100vw; max-height:100vh; background:transparent; color:#fff; }
   dialog.lightbox::backdrop { background:rgba(0,0,0,.92); }
-  dialog.lightbox[open] { display:flex; align-items:center; justify-content:center; cursor:zoom-out; }
+  dialog.lightbox[open] { display:flex; align-items:center; justify-content:center; cursor:pointer; }
   .lightbox img { max-width:96vw; max-height:92vh; width:auto; height:auto; object-fit:contain; border-radius:2px; }
   .lb-btn { position:fixed; background:rgba(0,0,0,.55); color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:3px; width:44px; height:44px; font-size:1.3rem; line-height:1; cursor:pointer; }
   .lb-btn:hover,.lb-btn:focus-visible { background:rgba(255,255,255,.2); }
@@ -146,9 +146,39 @@
   footer a { text-decoration:none; } footer a:hover { color:var(--ink); }
   @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } html { scroll-behavior:auto; } }
 
+  body { cursor:auto; }
+  .media-slot video,.media-slot { cursor:auto; }
+  summary.entry-head,.filter,.btn,.lb-btn,.reel-frame { cursor:pointer; }
+  /* scroll reveals */
+  .js .rv, .js .rv-group > * { opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1); transition-delay:calc(var(--i,0) * 110ms); }
+  .js .rv.in, .js .rv-group.in > * { opacity:1; transform:none; }
+  .js .entry-list > details.entry { opacity:0; transform:translateY(26px) scale(.98); }
+  .js .entry-list > details.entry.seen { opacity:1; transform:none; transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1),border-color .2s ease,box-shadow .2s ease; transition-delay:calc(var(--i,0) * 90ms),calc(var(--i,0) * 90ms),0s,0s; }
+  .js .entry-list > details.entry.seen:not([open]):hover { transform:translateY(-4px); transition-delay:0s; }
+  h2.section-title { position:relative; display:inline-block; }
+  h2.section-title::after { content:""; position:absolute; left:0; bottom:-6px; height:3px; width:100%; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .8s .3s cubic-bezier(.2,.7,.2,1); }
+  h2.section-title.in::after { transform:scaleX(1); }
+  .hero { background-position:center calc(-1px + var(--gy,0px)); }
+  .reel-frame { animation:glow 4s ease-in-out infinite; }
+  @keyframes glow { 50% { box-shadow:10px 10px 0 var(--accent-2),0 0 36px color-mix(in srgb,var(--accent) 35%,transparent); } }
+  .stat-block dt { position:relative; padding-left:0; transition:padding-left .25s ease; }
+  .stat-block > div:hover dt { padding-left:10px; }
+  .stat-block > div { border-left:2px solid transparent; transition:border-color .25s ease; padding-left:12px; }
+  .stat-block > div:hover { border-left-color:var(--accent); }
+  .portrait img { transition:transform .6s ease,filter .6s ease; filter:saturate(.85); }
+  .portrait:hover img { transform:scale(1.06) rotate(-1deg); filter:saturate(1.1); }
+  .tag { transition:background .2s ease,color .2s ease,transform .2s ease; } .tag:hover { background:var(--accent-2); color:var(--paper); transform:translateY(-2px); }
+  details[open] .tag { animation:rise .4s ease both; animation-delay:calc(var(--t,0) * 40ms); }
+  details[open] .entry-desc p { animation:rise .5s ease both; animation-delay:calc(260ms + var(--t,0) * 120ms); }
+  .contact-list li { transition:background .2s ease,padding-left .25s ease; } .contact-list li:hover { background:var(--card); padding-left:10px; }
+  .counters div { transition:transform .2s ease; } .counters div:hover { transform:translateY(-3px); }
+  footer a { display:inline-block; transition:transform .2s ease; } footer a:hover { transform:translateY(-3px); }
+  .brand { transition:letter-spacing .25s ease; } .brand:hover { letter-spacing:.03em; }
+
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add("js")</script>
 <header class="site">
   <div class="nav-row">
     <a class="brand" href="#top">Xavier Rosario Torres</a>
@@ -192,7 +222,7 @@
 
   <section class="team" aria-label="What I bring to a team">
     <div class="wrap">
-      <dl class="stat-block">
+      <dl class="stat-block rv-group">
         <div><dt>Full-pipeline art</dt><dd>Model, UV, texture, and light an asset, then script how it behaves. One person, no handoff gaps.</dd></div>
         <div><dt>Systems built to be shared</dt><dd>Modular, optimized, well-commented code that teammates can extend without me in the room.</dd></div>
         <div><dt>Scope-smart and lead-friendly</dt><dd>I lock the core mechanic early, cut what doesn't serve it, and check in with leads before changing anything.</dd></div>
@@ -202,16 +232,17 @@
 
   <section id="work">
     <div class="wrap">
-      <h2 class="section-title">Selected work</h2>
-      <p class="section-sub">Start with Station, my flagship. The rest show range: team projects I helped ship, solo games built end to end, and experiments where I test new ideas.</p>
-      <div class="filters" role="group" aria-label="Filter projects by discipline">
+      <h2 class="section-title rv">Selected work</h2>
+      <p class="section-sub rv">Start with Station, my flagship. The rest show range: team projects I helped ship, solo games built end to end, and experiments where I test new ideas.</p>
+      <div class="filters rv" role="group" aria-label="Filter projects by discipline">
         <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter" data-filter="best" aria-pressed="false">Best quality</button>
         <button type="button" class="filter" data-filter="design" aria-pressed="false">Design</button>
         <button type="button" class="filter" data-filter="modeling" aria-pressed="false">Modeling</button>
         <button type="button" class="filter" data-filter="programming" aria-pressed="false">Programming</button>
       </div>
       <div class="entry-list">
-      <details class="entry feat" id="station" data-cats="design modeling programming">
+      <details class="entry feat" id="station" data-cats="best design modeling programming">
         <summary class="entry-head">
           <img class="entry-thumb" src="station-art-a.png" alt="" loading="lazy">
           <span class="entry-titles"><h3>Station</h3><p>Solo project · procedural multiplayer extraction horror · in development</p><span class="feat-only"><span class="badge">Featured · main project</span><span class="feat-blurb">A procedurally generated station, 250+ hand-made assets, and a multiplayer horror loop built to make you feel alone.</span></span></span>
@@ -234,7 +265,7 @@
           <div class="entry-desc"><p><strong>The game</strong>A multiplayer extraction horror game built on procedural generation. The goal is dread through isolation: even with friends in the same session, the station should make you feel alone.</p><p><strong>The art</strong>I modeled, UV-unwrapped, and textured more than 250 assets by hand, then lit and post-processed every space so the mood lands the moment a player steps in. Hero pieces and background clutter get the same care, because that is what makes a corridor feel lived in.</p><p><strong>The tech</strong>Procedural level generation and multiplayer horror are two areas I think are underexplored, so I am pushing on both at once. Alien: Isolation, SOMA, and Portal 2 set the bar I am building toward.</p><p><strong>My role</strong>Everything: design, programming, 3D modeling, UV and texturing, lighting, post-processing, and UI. This is my main portfolio piece and it is in active development.</p></div>
         </div>
       </details>
-      <details class="entry" id="shift" data-cats="design programming">
+      <details class="entry" id="shift" data-cats="best design programming">
         <summary class="entry-head">
           <img class="entry-thumb" src="shift-art-a.png" alt="" loading="lazy">
           <span class="entry-titles"><h3>Shift</h3><p>Solo project · gravity-switching first-person arena shooter</p></span>
@@ -256,7 +287,7 @@
           <div class="entry-desc"><p><strong>The game</strong>A fast, arcade-style movement shooter where stepping onto a plane flips your gravity. Built for 3v3 play across several modes, with levels designed so players keep finding creative routes through a fight.</p><p><strong>My role</strong>I designed the gravity mechanic, using volume triggers to reorient players onto new surfaces, and built a weapon and ability system players choose at spawn. I also designed and lit multiple levels so every angle reads cinematically, whichever way up happens to be.</p><p><strong>What it taught me</strong>Shift was my first project to outgrow its scope. Cutting features, locking down a core mechanic, and planning around constraints are habits I now bring to day one of every project.</p></div>
         </div>
       </details>
-      <details class="entry" id="understaffed" data-cats="design programming">
+      <details class="entry" id="understaffed" data-cats="best design programming">
         <summary class="entry-head">
           <img class="entry-thumb" src="understaffed-art-a.png" alt="" loading="lazy">
           <span class="entry-titles"><h3>Under Staffed</h3><p>Team of 7 · fast-paced workplace management game</p></span>
@@ -344,10 +375,10 @@
 
   <section id="about">
     <div class="wrap">
-      <h2 class="section-title">About</h2>
+      <h2 class="section-title rv">About</h2>
       <div class="about-grid">
-        <div class="portrait"><img src="headshot.jpg" alt="Portrait of Xavier Rosario Torres"></div>
-        <div class="about-text">
+        <div class="portrait rv"><img src="headshot.jpg" alt="Portrait of Xavier Rosario Torres"></div>
+        <div class="about-text rv-group">
           <p>I have been taking games apart to see how they work since I was young. Tutorials and solo experiments got me started, and Shift, a project far out of scope, taught me what matters most: a clear core mechanic, honest scoping, and finishing what you start. I bring that to every project now.</p>
           <p>I am a Digital Media student at the University of Central Florida, graduating Spring 2027. Technical art is where I found my place: it sits between modeling and programming, and it lets me do the most for a team. I am happiest building the system, modeling the assets, and lighting the scene so it all works together.</p>
           <p>Right now I am working on team projects for Workshop and Casual Game Production alongside Station, my own game. I write modular, optimized, well-commented code so teammates can pick it up without me, and I am looking for a team that cares about craft as much as I do.</p>
@@ -358,9 +389,9 @@
 
   <section id="contact">
     <div class="wrap">
-      <h2 class="section-title">Let's build something</h2>
-      <p class="section-sub">Open to part-time and full-time roles, remote or Orlando-based. Email is the fastest way to reach me, and I answer every message.</p>
-      <ul class="contact-list">
+      <h2 class="section-title rv">Let's build something</h2>
+      <p class="section-sub rv">Open to part-time and full-time roles, remote or Orlando-based. Email is the fastest way to reach me, and I answer every message.</p>
+      <ul class="contact-list rv-group">
         <li><a href="mailto:xavierrosariotorres@gmail.com"><span class="contact-label">Email</span><span class="contact-value">xavierrosariotorres@gmail.com <span class="arrow" aria-hidden="true">↗</span></span></a></li>
         <li><a href="https://www.linkedin.com/in/xavier-rosario-techartist" target="_blank" rel="noopener"><span class="contact-label">LinkedIn</span><span class="contact-value">linkedin.com/in/xavier-rosario-techartist <span class="arrow" aria-hidden="true">↗</span></span></a></li>
         <li><a href="Rosario_Resume.pdf" download="Rosario_Resume.pdf"><span class="contact-label">Resume</span><span class="contact-value">Download PDF <span class="arrow" aria-hidden="true">↓</span></span></a></li>
@@ -431,8 +462,31 @@
   // stagger media on open
   entries.forEach(function (d) {
     d.addEventListener('toggle', function () {
-      if (d.open) d.querySelectorAll('.media-slot').forEach(function (s, i) { s.style.setProperty('--i', i); });
+      if (d.open) { d.querySelectorAll('.media-slot').forEach(function (s, i) { s.style.setProperty('--i', i); }); d.querySelectorAll('.tag').forEach(function (s, i) { s.style.setProperty('--t', i); }); d.querySelectorAll('.entry-desc p').forEach(function (s, i) { s.style.setProperty('--t', i); }); }
     });
+  });
+  // scroll reveals
+  var seenIdx = 0;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      if (el.matches('details.entry')) { el.style.setProperty('--i', seenIdx++ % 3); el.classList.add('seen'); }
+      else el.classList.add('in');
+      io.unobserve(el);
+    });
+  }, { threshold: .15 });
+  document.querySelectorAll('.rv, .rv-group, details.entry').forEach(function (el) {
+    if (el.classList.contains('rv-group')) [].forEach.call(el.children, function (c, i) { c.style.setProperty('--i', i); });
+    io.observe(el);
+  });
+  // hero grid parallax
+  var hero = document.querySelector('.hero');
+  if (!reduce) addEventListener('scroll', function () { hero.style.setProperty('--gy', (scrollY * .15) + 'px'); }, { passive: true });
+  // magnetic buttons
+  if (!reduce) document.querySelectorAll('.btn').forEach(function (b) {
+    b.addEventListener('mousemove', function (e) { var r = b.getBoundingClientRect(); b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * .15) + 'px,' + ((e.clientY - r.top - r.height / 2) * .25 - 2) + 'px)'; });
+    b.addEventListener('mouseleave', function () { b.style.transform = ''; });
   });
   // lightbox
   var dlg = document.getElementById('lightbox'), big = dlg.querySelector('img'), group = [], idx = 0;
