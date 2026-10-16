@@ -3,327 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Xavier Rosario Torres — Tech Artist</title>
+<title>Xavier Rosario Torres | Technical Artist</title>
+<meta name="description" content="Portfolio of Xavier Rosario Torres, a technical artist in Orlando, FL working across gameplay programming, 3D modeling, lighting, and procedural systems in Unity and Unreal.">
+<meta property="og:title" content="Xavier Rosario Torres | Technical Artist">
+<meta property="og:description" content="Gameplay systems, procedural generation, lighting, and 3D art in Unity and Unreal.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #EFE9DC;
-    --card: #F8F5EC;
-    --ink: #1B1B16;
-    --ink-soft: #55503F;
-    --line: #C9C0AC;
-    --accent: #E2542B;
-    --accent-2: #2F6E5C;
+    --paper: #EFE9DC; --card: #F8F5EC; --ink: #1B1B16; --ink-soft: #55503F;
+    --line: #C9C0AC; --accent: #C8431C; --accent-2: #2F6E5C;
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-  :root:not([data-theme="light"]) {
-    @media (prefers-color-scheme: dark) {
-      --paper: #17160F;
-      --card: #201F16;
-      --ink: #F1EDDF;
-      --ink-soft: #B9B29B;
-      --line: #3C3826;
-      --accent: #FF7A4A;
-      --accent-2: #6FB7A0;
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17160F; --card: #201F16; --ink: #F1EDDF; --ink-soft: #B9B29B;
+      --line: #3C3826; --accent: #FF7A4A; --accent-2: #6FB7A0;
     }
   }
   :root[data-theme="dark"] {
-    --paper: #17160F;
-    --card: #201F16;
-    --ink: #F1EDDF;
-    --ink-soft: #B9B29B;
-    --line: #3C3826;
-    --accent: #FF7A4A;
-    --accent-2: #6FB7A0;
+    --paper: #17160F; --card: #201F16; --ink: #F1EDDF; --ink-soft: #B9B29B;
+    --line: #3C3826; --accent: #FF7A4A; --accent-2: #6FB7A0;
   }
   * { box-sizing: border-box; }
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Space Grotesk", system-ui, sans-serif;
-    line-height: 1.5;
-  }
-  .mono {
-    font-family: "IBM Plex Mono", ui-monospace, monospace;
-  }
+  html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 64px); scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Space Grotesk", system-ui, sans-serif; line-height: 1.55; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
   a { color: inherit; }
-  .wrap {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  header.site {
-    position: sticky;
-    top: env(safe-area-inset-top, 0px);
-    z-index: 10;
-    background: color-mix(in srgb, var(--paper) 92%, transparent);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 24px;
-    max-width: 880px;
-    margin: 0 auto;
-  }
-  .nav-row .brand { font-weight: 600; font-size: 1rem; text-decoration: none; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 880px; margin: 0 auto; }
+  .brand { font-weight: 600; text-decoration: none; }
   .nav-links { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
-  .nav-links a {
-    text-decoration: none;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-    border-bottom: 1px solid transparent;
-    padding-bottom: 2px;
-  }
+  .nav-links a { text-decoration: none; font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; color: var(--ink-soft); border-bottom: 1px solid transparent; padding-bottom: 2px; }
   .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); border-color: var(--accent); }
 
-  /* HERO */
-  .hero {
-    padding: 72px 0 56px;
-    border-bottom: 1px solid var(--line);
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 28px 28px;
-    background-position: center -1px;
-    background-repeat: repeat;
-    opacity: 1;
-  }
-  .hero-inner {
-    background: var(--paper);
-    padding: 8px 0;
-    padding-left: clamp(24px, 6vw, 72px);
-  }
-  .kicker {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.8rem;
-    color: var(--accent-2);
-    margin: 0 0 14px;
-  }
-  .kicker::before { content: "// "; color: var(--line); }
-  h1.name {
-    font-size: clamp(2.4rem, 6vw, 4rem);
-    line-height: 1.02;
-    margin: 0 0 6px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    animation: rise 0.6s ease-out both;
-  }
-  .role {
-    font-size: clamp(1.1rem, 2.4vw, 1.4rem);
-    color: var(--accent);
-    font-weight: 600;
-    margin: 0 0 22px;
-    animation: rise 0.6s 0.08s ease-out both;
-  }
-  .pitch {
-    max-width: 54ch;
-    color: var(--ink-soft);
-    font-size: 1.05rem;
-    margin: 0 0 28px;
-    animation: rise 0.6s 0.16s ease-out both;
-  }
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .name, .role, .pitch { animation: none; }
-  }
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.8rem;
-  }
-  .chip {
-    border: 1px solid var(--line);
-    padding: 5px 10px;
-    border-radius: 3px;
-    color: var(--ink-soft);
-  }
+  .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--line); background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 28px 28px; background-position: center -1px; }
+  .hero-inner { background: var(--paper); padding-top: 8px; padding-bottom: 8px; padding-left: clamp(24px, 6vw, 72px); }
+  .kicker { font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; color: var(--accent-2); margin: 0 0 14px; }
+  .kicker::before { content: "// "; color: var(--ink-soft); }
+  h1.name { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.02; margin: 0 0 6px; font-weight: 700; letter-spacing: -0.01em; animation: rise 0.6s ease-out both; }
+  .role { font-size: clamp(1.1rem, 2.4vw, 1.4rem); color: var(--accent); font-weight: 600; margin: 0 0 22px; animation: rise 0.6s 0.08s ease-out both; }
+  .pitch { max-width: 56ch; color: var(--ink-soft); font-size: 1.05rem; margin: 0 0 28px; animation: rise 0.6s 0.16s ease-out both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .name, .role, .pitch { animation: none; } html { scroll-behavior: auto; } }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; }
+  .chip { border: 1px solid var(--line); padding: 5px 10px; border-radius: 3px; color: var(--ink-soft); }
+  .chip.status { border-color: var(--accent-2); color: var(--accent-2); }
 
   section { padding: 56px 0; }
   section#work { border-bottom: 1px solid var(--line); }
-  h2.section-title {
-    font-size: 1.6rem;
-    margin: 0 0 8px;
-    font-weight: 600;
-  }
-  .section-sub {
-    color: var(--ink-soft);
-    margin: 0 0 32px;
-    max-width: 60ch;
-  }
+  h2.section-title { font-size: 1.6rem; margin: 0 0 8px; font-weight: 600; }
+  .section-sub { color: var(--ink-soft); margin: 0 0 32px; max-width: 62ch; }
 
-  /* PROJECT LOG */
-  details.entry {
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    background: var(--card);
-    margin-bottom: 14px;
-    overflow: hidden;
-  }
+  details.entry { border: 1px solid var(--line); border-radius: 4px; background: var(--card); margin-bottom: 14px; overflow: hidden; }
   details.entry[open] summary { border-bottom: 1px solid var(--line); }
-  summary.entry-head {
-    list-style: none;
-    cursor: pointer;
-    padding: 18px 20px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
+  summary.entry-head { list-style: none; cursor: pointer; padding: 18px 20px; display: flex; align-items: center; gap: 16px; }
   summary.entry-head::-webkit-details-marker { display: none; }
-  .entry-no {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.85rem;
-    color: var(--accent-2);
-    flex-shrink: 0;
-    width: 2.6em;
-  }
+  .entry-no { font-size: 0.85rem; color: var(--accent-2); flex-shrink: 0; width: 2.6em; }
   .entry-titles { flex: 1; min-width: 0; }
   .entry-titles h3 { margin: 0 0 4px; font-size: 1.15rem; font-weight: 600; }
   .entry-titles p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
-  .entry-caret {
-    font-family: "IBM Plex Mono", monospace;
-    color: var(--ink-soft);
-    transition: transform 0.2s ease;
-    flex-shrink: 0;
-  }
+  .entry-caret { color: var(--ink-soft); transition: transform 0.2s ease; flex-shrink: 0; }
   details[open] .entry-caret { transform: rotate(45deg); }
-  .entry-body { padding: 4px 20px 24px; }
+  .entry-body { padding: 20px 20px 24px; }
   .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
-  .tag {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.72rem;
-    padding: 3px 8px;
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    color: var(--ink-soft);
-  }
-  .media-strip {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-  .media-slot {
-    aspect-ratio: 4 / 3;
-    border: 1px dashed var(--line);
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    color: var(--ink-soft);
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.7rem;
-    text-align: center;
-    padding: 8px;
-  }
-  .media-slot .glyph { font-size: 1.3rem; }
-  .entry-desc { color: var(--ink); max-width: 62ch; }
+  .tag { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; padding: 3px 8px; border: 1px solid var(--line); border-radius: 3px; color: var(--ink-soft); }
+  .media-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 20px; }
+  .media-slot { aspect-ratio: 4 / 3; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--paper); }
+  .media-slot.full { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+  .media-slot img, .media-slot video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .entry-desc { max-width: 64ch; }
   .entry-desc p { margin: 0 0 12px; }
   .entry-desc p:last-child { margin-bottom: 0; }
+  .entry-desc strong { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; font-weight: 500; color: var(--accent-2); display: block; margin-bottom: 2px; }
 
-  /* ABOUT */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 32px;
-    align-items: start;
-  }
-  .portrait {
-    aspect-ratio: 1;
-    border: 1px dashed var(--line);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 6px;
-    color: var(--ink-soft);
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.72rem;
-    text-align: center;
-    padding: 12px;
-    overflow: hidden;
-  }
-  .about-text p { max-width: 62ch; }
-  .stat-block {
-    margin-top: 22px;
-    border-top: 1px solid var(--line);
-    padding-top: 16px;
-  }
-  .stat-block dt {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.72rem;
-    color: var(--accent-2);
-    margin: 0 0 6px;
-  }
-  .stat-block dd {
-    margin: 0 0 14px;
-    color: var(--ink-soft);
-  }
-  @media (max-width: 560px) {
-    .about-grid { grid-template-columns: 1fr; }
-    .portrait { width: 140px; }
-  }
+  .about-grid { display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: start; }
+  .portrait { aspect-ratio: 1; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--card); }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-text p { max-width: 64ch; margin-top: 0; }
+  .stat-block { margin: 22px 0 0; border-top: 1px solid var(--line); padding-top: 16px; }
+  .stat-block dt { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--accent-2); margin: 0 0 6px; }
+  .stat-block dd { margin: 0 0 14px; color: var(--ink-soft); }
+  @media (max-width: 560px) { .about-grid { grid-template-columns: 1fr; } .portrait { width: 140px; } .nav-links { gap: 14px; } }
 
-  /* CONTACT */
   #contact { padding-bottom: 80px; }
-  .contact-list {
-    list-style: none;
-    margin: 24px 0 0;
-    padding: 0;
-    border-top: 1px solid var(--line);
-  }
-  .contact-list li {
-    border-bottom: 1px solid var(--line);
-  }
-  .contact-list a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 4px;
-    text-decoration: none;
-    gap: 16px;
-  }
+  .contact-list { list-style: none; margin: 24px 0 0; padding: 0; border-top: 1px solid var(--line); }
+  .contact-list li { border-bottom: 1px solid var(--line); }
+  .contact-list a { display: flex; justify-content: space-between; align-items: center; padding: 16px 4px; text-decoration: none; gap: 16px; flex-wrap: wrap; }
   .contact-list a:hover .arrow, .contact-list a:focus-visible .arrow { transform: translateX(4px); }
   .contact-label { font-weight: 600; }
-  .contact-value {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .contact-value { font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; overflow-wrap: anywhere; }
   .arrow { transition: transform 0.15s ease; color: var(--accent); }
 
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 20px 0 calc(20px + env(safe-area-inset-bottom, 0px));
-  }
-  footer .wrap {
-    display: flex;
-    justify-content: space-between;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.72rem;
-    color: var(--ink-soft);
-  }
-
+  footer { border-top: 1px solid var(--line); padding: 20px 0 calc(20px + env(safe-area-inset-bottom, 0px)); }
+  footer .wrap { display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--ink-soft); }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--ink); }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 </style>
 </head>
@@ -345,15 +126,16 @@
     <div class="wrap hero-inner">
       <p class="kicker">Portfolio / 2026</p>
       <h1 class="name">Xavier Rosario Torres</h1>
-      <p class="role">Tech Artist</p>
-      <p class="pitch">I design systems players want to explore and experiment with, keeping them coming back over and over. Eight years developing, programming, and modeling.</p>
+      <p class="role">Technical Artist</p>
+      <p class="pitch">I build the systems, tools, and visuals that make a game worth poking at. Eight years of programming, modeling, and lighting, all aimed at giving players something to experiment with and a reason to come back.</p>
       <div class="hero-meta">
-        <span class="chip">Based in Orlando, FL</span>
-        <span class="chip">Open to part-time and full-time roles</span>
+        <span class="chip status">Open to part-time and full-time roles</span>
+        <span class="chip">Orlando, FL / remote</span>
         <span class="chip">Unity</span>
-	<span class="chip">Unreal</span>
-	<span class="chip">Substance Painter</span>
-	<span class="chip">Blender</span>
+        <span class="chip">Unreal Engine</span>
+        <span class="chip">C# / Blueprints</span>
+        <span class="chip">Blender</span>
+        <span class="chip">Substance Painter</span>
       </div>
     </div>
   </section>
@@ -361,42 +143,33 @@
   <section id="work">
     <div class="wrap">
       <h2 class="section-title">Selected work</h2>
-      <p class="section-sub">The works below are a culmination of different projects ive worked on and shipped or just prototyped. My portfolio is a demonstration of my competency as well as the lessons i've learned. It serves to show why I would be a valuable and great member to your team.</p>
+      <p class="section-sub">Team projects I helped ship, solo projects I built end to end, and prototypes I used to test ideas. Each entry says what I owned and what it taught me.</p>
 
       <details class="entry">
         <summary class="entry-head">
           <span class="entry-no mono">01</span>
           <span class="entry-titles">
             <h3>Under Staffed</h3>
-            <p>Group of 7 · fast paced worker managment game</p>
+            <p>Team of 7 · fast-paced workplace management game</p>
           </span>
-          <span class="entry-caret mono">+</span>
+          <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
           <div class="tags">
-            <span class="tag">UI / UX Design</span>
+            <span class="tag">Gameplay Programming</span>
+            <span class="tag">UI / UX</span>
             <span class="tag">Unity / C#</span>
           </div>
           <div class="media-strip">
-            <div class="media-slot" style="padding:0; grid-column: 1 / -1; aspect-ratio: 16/9;">
-    		<video src="understaffed-programming-a.mp4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" controls muted playsinline></video>
-	    </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="understaffed-art-a.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="understaffed-art-b.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="understaffed-art-c.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="understaffed-art-d.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
+            <div class="media-slot full"><video src="understaffed-programming-a.mp4" controls muted playsinline preload="metadata" aria-label="Under Staffed gameplay and systems demo"></video></div>
+            <div class="media-slot"><img src="understaffed-art-a.png" alt="Under Staffed concept art, image 1" loading="lazy"></div>
+            <div class="media-slot"><img src="understaffed-art-b.png" alt="Under Staffed concept art, image 2" loading="lazy"></div>
+            <div class="media-slot"><img src="understaffed-art-c.png" alt="Under Staffed concept art, image 3" loading="lazy"></div>
+            <div class="media-slot"><img src="understaffed-art-d.png" alt="Under Staffed concept art, image 4" loading="lazy"></div>
           </div>
           <div class="entry-desc">
-            <p>A classic management where the customer manages an understaffed establishment in attempt to keep customers happy and avoid being fired.</p>
-            <p>I created the core worker system including dragging workers around, assigning workers to a given area, and all work station given functions. I also did the timer system, interaction system, UI scripted elements, and the door system.</p>
+            <p><strong>The game</strong>You run a chronically understaffed business and have to juggle workers, stations, and customers to keep everyone happy and keep your job.</p>
+            <p><strong>My role</strong>I built the core worker system: drag-and-drop worker control, area assignment, and the behavior for every work station. I also owned the timer system, the interaction system, scripted UI elements, and the door system. These are the systems the whole game loop depends on, so I wrote them to be modular enough for teammates to build on.</p>
           </div>
         </div>
       </details>
@@ -406,35 +179,26 @@
           <span class="entry-no mono">02</span>
           <span class="entry-titles">
             <h3>Sound Smith</h3>
-            <p>Small group · rhythm game</p>
+            <p>Small team · action rhythm game</p>
           </span>
-          <span class="entry-caret mono">+</span>
+          <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
           <div class="tags">
-            <span class="tag">Unity / C#</span>
+            <span class="tag">Gameplay Programming</span>
             <span class="tag">Audio Implementation</span>
+            <span class="tag">Unity / C#</span>
           </div>
           <div class="media-strip">
-            <div class="media-slot" style="padding:0; grid-column: 1 / -1; aspect-ratio: 16/9;">
-    		<video src="soundsmith-programming-a.mp4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" controls muted playsinline></video>
-	    </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="soundsmith-art-a.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="soundsmith-art-b.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="soundsmith-art-c.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="soundsmith-art-d.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
+            <div class="media-slot full"><video src="soundsmith-programming-a.mp4" controls muted playsinline preload="metadata" aria-label="Sound Smith gameplay and systems demo"></video></div>
+            <div class="media-slot"><img src="soundsmith-art-a.png" alt="Sound Smith concept art, image 1" loading="lazy"></div>
+            <div class="media-slot"><img src="soundsmith-art-b.png" alt="Sound Smith concept art, image 2" loading="lazy"></div>
+            <div class="media-slot"><img src="soundsmith-art-c.png" alt="Sound Smith concept art, image 3" loading="lazy"></div>
+            <div class="media-slot"><img src="soundsmith-art-d.png" alt="Sound Smith concept art, image 4" loading="lazy"></div>
           </div>
           <div class="entry-desc">
-            <p>An action like rhythm game where the player collects ingredients via the use of minigames. They must fight bosses in order to go home and craft the legendary instruments.</p>
-            <p>I created the work station randomization system, inspect system, save system, as well as the boss battle logic. I updated various prefab logic and added 90% of the sound effects. I also added a simple shelf.</p>
+            <p><strong>The game</strong>Players collect ingredients through rhythm minigames, then fight bosses to earn the right to return home and craft legendary instruments.</p>
+            <p><strong>My role</strong>I built the workstation randomization system, the inspect system, the save system, and the boss battle logic. I also updated prefab logic across the project, implemented about 90% of the sound effects, and added an in-world shelf. Since the game runs on rhythm, I treated audio implementation as gameplay work rather than polish.</p>
           </div>
         </div>
       </details>
@@ -444,55 +208,36 @@
           <span class="entry-no mono">03</span>
           <span class="entry-titles">
             <h3>Station</h3>
-            <p>Solo Project · procedural extraction horror game focused on instilling fear via isolation even while playing with friends</p>
+            <p>Solo project · procedural multiplayer extraction horror, in development</p>
           </span>
-          <span class="entry-caret mono">+</span>
+          <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
           <div class="tags">
             <span class="tag">Procedural Generation</span>
-            <span class="tag">UI / UX Design</span>
             <span class="tag">Multiplayer</span>
-            <span class="tag">3D modeling</span>
+            <span class="tag">3D Modeling</span>
             <span class="tag">Lighting</span>
             <span class="tag">Post Process</span>
+            <span class="tag">UI / UX</span>
             <span class="tag">Unity / C#</span>
           </div>
           <div class="media-strip">
-	    <div class="media-slot" style="padding:0; grid-column: 1 / -1; aspect-ratio: 16/9;">
-    		<video src="station-programming-a.mp4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" controls muted playsinline></video>
-	    </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="station-art-a.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="station-art-b.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="station-art-c.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="station-art-d.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="station-art-e.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="station-art-f.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="station-art-g.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="station-art-h.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="station-art-i.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
+            <div class="media-slot full"><video src="station-programming-a.mp4" controls muted playsinline preload="metadata" aria-label="Station procedural generation and gameplay demo"></video></div>
+            <div class="media-slot"><img src="station-art-a.png" alt="Station environment, image 1" loading="lazy"></div>
+            <div class="media-slot"><img src="station-art-b.png" alt="Station environment, image 2" loading="lazy"></div>
+            <div class="media-slot"><img src="station-art-c.png" alt="Station environment, image 3" loading="lazy"></div>
+            <div class="media-slot"><img src="station-art-d.png" alt="Station environment, image 4" loading="lazy"></div>
+            <div class="media-slot"><img src="station-art-e.png" alt="Station environment, image 5" loading="lazy"></div>
+            <div class="media-slot"><img src="station-art-f.png" alt="Station environment, image 6" loading="lazy"></div>
+            <div class="media-slot"><img src="station-art-g.png" alt="Station environment, image 7" loading="lazy"></div>
+            <div class="media-slot"><img src="station-art-h.png" alt="Station environment, image 8" loading="lazy"></div>
+            <div class="media-slot"><img src="station-art-i.png" alt="Station environment, image 9" loading="lazy"></div>
           </div>
           <div class="entry-desc">
-            <p>A multiplayer procedural extraction horror game focused on innovating procedural generation and making players feel fear via isolation in a multiplayer environment.</p>
-            <p>This current project is still in development and is acting as my main portfolio piece. Taking inspiration from Alien Isolation, SOMA, and Portal 2 I wanted to design a game that could change the game design industry and innovate current elements that are in need of developing. This project as of this far has been completly my design and work.</p>
+            <p><strong>The game</strong>A multiplayer extraction horror game built around procedural generation. The goal is dread through isolation: even with friends in the same session, the station should make you feel alone.</p>
+            <p><strong>Why it matters</strong>This is my main portfolio piece and still in active development. I drew on Alien: Isolation, SOMA, and Portal 2 and set out to push on parts of procedural level design and multiplayer horror that I think are underexplored.</p>
+            <p><strong>My role</strong>Everything: design, programming, 3D modeling, lighting, post-processing, and UI.</p>
           </div>
         </div>
       </details>
@@ -502,9 +247,9 @@
           <span class="entry-no mono">04</span>
           <span class="entry-titles">
             <h3>Shift</h3>
-            <p>Solo Project · gravity switching first person shooter with abilities</p>
+            <p>Solo project · gravity-switching first-person arena shooter</p>
           </span>
-          <span class="entry-caret mono">+</span>
+          <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
           <div class="tags">
@@ -513,37 +258,20 @@
             <span class="tag">Level Design</span>
           </div>
           <div class="media-strip">
-	    <div class="media-slot" style="padding:0; grid-column: 1 / -1; aspect-ratio: 16/9;">
-    		<video src="shift-art-i.mp4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" controls muted playsinline></video>
-	    </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="shift-art-a.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="shift-art-b.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="shift-art-c.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="shift-art-d.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="shift-art-e.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="shift-art-f.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="shift-art-g.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="shift-art-h.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
+            <div class="media-slot full"><video src="shift-art-i.mp4" controls muted playsinline preload="metadata" aria-label="Shift gameplay and level showcase"></video></div>
+            <div class="media-slot"><img src="shift-art-a.png" alt="Shift level, image 1" loading="lazy"></div>
+            <div class="media-slot"><img src="shift-art-b.png" alt="Shift level, image 2" loading="lazy"></div>
+            <div class="media-slot"><img src="shift-art-c.png" alt="Shift level, image 3" loading="lazy"></div>
+            <div class="media-slot"><img src="shift-art-d.png" alt="Shift level, image 4" loading="lazy"></div>
+            <div class="media-slot"><img src="shift-art-e.png" alt="Shift level, image 5" loading="lazy"></div>
+            <div class="media-slot"><img src="shift-art-f.png" alt="Shift level, image 6" loading="lazy"></div>
+            <div class="media-slot"><img src="shift-art-g.png" alt="Shift level, image 7" loading="lazy"></div>
+            <div class="media-slot"><img src="shift-art-h.png" alt="Shift level, image 8" loading="lazy"></div>
           </div>
           <div class="entry-desc">
-            <p>Gravity switching first person movement shooter designed to be a casual arcade like experience. Players will jump and step on planes allowing them to switch gravity. With a variety of gamemodes this experience is designed to be a 3vs3 for constant action and strategy. Levels were designed in a way that allows players to be creative in their approach when facing enemy elements.</p>
-            <p>Designed a gravity orientation mechanic that uses volume triggers to change gravity surface. Designed a functional weapon and ablity system chosen at spawn. Developed and lit multiple levels in a way that allows any section of the map to look as if it were in a movie regardless of where the player was standing.</p>
+            <p><strong>The game</strong>A casual, arcade-style movement shooter where stepping onto a plane flips your gravity. Built for 3v3 play across several game modes, with levels designed so players can find creative routes through fights.</p>
+            <p><strong>My role</strong>I designed the gravity orientation mechanic, which uses volume triggers to reorient players to new surfaces. I also built a weapon and ability system that players choose at spawn, then designed and lit multiple levels so every angle of the map reads cinematically, whichever way "up" happens to be.</p>
+            <p><strong>What it taught me</strong>Shift was my first project that outgrew its scope. Cutting features, locking down a core mechanic, and planning around constraints are lessons I now apply from the first day of every project.</p>
           </div>
         </div>
       </details>
@@ -553,45 +281,30 @@
           <span class="entry-no mono">05</span>
           <span class="entry-titles">
             <h3>Cyber Scanners</h3>
-            <p>Solo Project · various pieces and experimentations on different projects</p>
+            <p>Solo project · tower defense game</p>
           </span>
-          <span class="entry-caret mono">+</span>
+          <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
           <div class="tags">
-            <span class="tag">UI / UX Design</span>
+            <span class="tag">Gameplay Programming</span>
+            <span class="tag">UI / UX</span>
             <span class="tag">2D Art</span>
             <span class="tag">Unity / C#</span>
           </div>
           <div class="media-strip">
-	    <div class="media-slot" style="padding:0; grid-column: 1 / -1; aspect-ratio: 16/9;">
-    		<video src="cs_programming_a.mp4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" controls muted playsinline></video>
-	    </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="cs_art_a.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="cs_art_b.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="cs_art_c.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="cs_art_d.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="cs_art_e.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="cs_art_f.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="cs_art_g.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
+            <div class="media-slot full"><video src="cs_programming_a.mp4" controls muted playsinline preload="metadata" aria-label="Cyber Scanners gameplay demo"></video></div>
+            <div class="media-slot"><img src="cs_art_a.png" alt="Cyber Scanners art, image 1" loading="lazy"></div>
+            <div class="media-slot"><img src="cs_art_b.png" alt="Cyber Scanners art, image 2" loading="lazy"></div>
+            <div class="media-slot"><img src="cs_art_c.png" alt="Cyber Scanners art, image 3" loading="lazy"></div>
+            <div class="media-slot"><img src="cs_art_d.png" alt="Cyber Scanners art, image 4" loading="lazy"></div>
+            <div class="media-slot"><img src="cs_art_e.png" alt="Cyber Scanners art, image 5" loading="lazy"></div>
+            <div class="media-slot"><img src="cs_art_f.png" alt="Cyber Scanners art, image 6" loading="lazy"></div>
+            <div class="media-slot"><img src="cs_art_g.png" alt="Cyber Scanners art, image 7" loading="lazy"></div>
           </div>
           <div class="entry-desc">
-            <p>A tower defense game where players must fend off from an ever increasing horde of enemies with different variations. Unlock and upgrade new towers to stop the enemy before they reach the end.</p>
-            <p>This entire game was designed from scratch and by me and me alone.</p>
+            <p><strong>The game</strong>Players defend against escalating waves of enemy types. They unlock and upgrade towers to stop enemies before they reach the end of the path.</p>
+            <p><strong>My role</strong>Everything: design, programming, UI, and 2D art.</p>
           </div>
         </div>
       </details>
@@ -601,61 +314,34 @@
           <span class="entry-no mono">06</span>
           <span class="entry-titles">
             <h3>Miscellaneous</h3>
-            <p>Not Applicable · various pieces and experimentations on different projects</p>
+            <p>Solo experiments · models, animation, texturing, VFX, and code</p>
           </span>
-          <span class="entry-caret mono">+</span>
+          <span class="entry-caret mono" aria-hidden="true">+</span>
         </summary>
         <div class="entry-body">
           <div class="tags">
-            <span class="tag">Procedural Generation</span>
-            <span class="tag">UI / UX Design</span>
-            <span class="tag">Multiplayer</span>
-            <span class="tag">3D modeling</span>
-            <span class="tag">Lighting</span>
-            <span class="tag">Post Process</span>
-            <span class="tag">Unity / C#</span>
+            <span class="tag">3D Modeling</span>
+            <span class="tag">Texturing</span>
+            <span class="tag">Animation</span>
+            <span class="tag">VFX</span>
+            <span class="tag">Programming</span>
           </div>
           <div class="media-strip">
-	    <div class="media-slot" style="padding:0; grid-column: 1 / -1; aspect-ratio: 16/9;">
-    		<video src="misc-file-f.mp4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" controls muted playsinline></video>
-	    </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="misc-file-a.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="misc-file-b.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="misc-file-c.jpg" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="misc-file-d.jpg" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="misc-file-e.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="misc-file-g.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0; grid-column: 1 / -1; aspect-ratio: 16/9;">
-    		<video src="misc-file-h.mp4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" controls muted playsinline></video>
-	    </div>
-	    <div class="media-slot" style="padding:0; grid-column: 1 / -1; aspect-ratio: 16/9;">
-    		<video src="misc-file-i.mp4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" controls muted playsinline></video>
-	    </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="misc-file-j.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="misc-file-k.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
-	    <div class="media-slot" style="padding:0;">
-    		<img src="misc-file-l.png" alt="Shift concept art" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
-            </div>
+            <div class="media-slot full"><video src="misc-file-f.mp4" controls muted playsinline preload="metadata" aria-label="Miscellaneous work, video 1"></video></div>
+            <div class="media-slot"><img src="misc-file-a.png" alt="Miscellaneous work, image 1" loading="lazy"></div>
+            <div class="media-slot"><img src="misc-file-b.png" alt="Miscellaneous work, image 2" loading="lazy"></div>
+            <div class="media-slot"><img src="misc-file-c.jpg" alt="Miscellaneous work, image 3" loading="lazy"></div>
+            <div class="media-slot"><img src="misc-file-d.jpg" alt="Miscellaneous work, image 4" loading="lazy"></div>
+            <div class="media-slot"><img src="misc-file-e.png" alt="Miscellaneous work, image 5" loading="lazy"></div>
+            <div class="media-slot"><img src="misc-file-g.png" alt="Miscellaneous work, image 6" loading="lazy"></div>
+            <div class="media-slot full"><video src="misc-file-h.mp4" controls muted playsinline preload="metadata" aria-label="Miscellaneous work, video 2"></video></div>
+            <div class="media-slot full"><video src="misc-file-i.mp4" controls muted playsinline preload="metadata" aria-label="Miscellaneous work, video 3"></video></div>
+            <div class="media-slot"><img src="misc-file-j.png" alt="Miscellaneous work, image 7" loading="lazy"></div>
+            <div class="media-slot"><img src="misc-file-k.png" alt="Miscellaneous work, image 8" loading="lazy"></div>
+            <div class="media-slot"><img src="misc-file-l.png" alt="Miscellaneous work, image 9" loading="lazy"></div>
           </div>
           <div class="entry-desc">
-            <p>These various projects include 3D models, animation, programming, texturing, and VFX that are all completely by me.</p>
-            <p>This is a current showcase of different seprate works that dont exactly branch into one category and or do not have enough substance to be their own category.</p>
+            <p>A collection of small studies that don't fit a single project: 3D models, animation, texturing, VFX, and programming experiments, all made by me. This is where I try new techniques before they show up in bigger work.</p>
           </div>
         </div>
       </details>
@@ -666,17 +352,18 @@
     <div class="wrap">
       <h2 class="section-title">About</h2>
       <div class="about-grid">
-	<div class="portrait"><img src="headshot.jpg" alt="Xavier Rosario Torres" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="portrait"><img src="headshot.jpg" alt="Portrait of Xavier Rosario Torres"></div>
         <div class="about-text">
-          <p>I got into the inital phase of game design from a very young age, always interested in how the game ive come to know and love are built. I started off by watching tutorials and experimenting on my own via various projects. Most notable was Shift. Designing games that were out of scope taught me many lessons and the pillars of game design. Through my failures i've learned a great many things and actively apply them in which ever project im currently working on. I'm currently attending the University of Central Florida. At UCF the classes have helped give me a clearer perspective of what the industry may hold for me and hardships yet to come. Throughout my time at UCF the Tech Art pathway stood out to me as it acts like a bridge between modeling and programming. This role allows me actively do more for my team and really gave me a path that I can be passionate about. Using my new found experience and knowledge I expect to graduate in Spring 2027 with a bachelors degree in Digital Media.</p>
-          <p>Most recently i've been working on several projects for multiple classes including Workshop and Casual Game Production as well as my own passion project called Shift. I actively spend many hours modeling and programming these various projects. I always ensure to check in with leads before making changes and have a strict focus on creating, modular, optomized, clean, well commented code.</p>
+          <p>I've been taking games apart to see how they work since I was young. I started with tutorials and solo experiments, and the project that taught me the most was Shift. It was far out of scope, and that gap taught me what actually matters in game design: a clear core mechanic, honest scoping, and finishing what you start. I apply those lessons to every project now.</p>
+          <p>I'm a Digital Media student at the University of Central Florida, graduating in Spring 2027. Along the way I found technical art, which sits between modeling and programming and lets me do the most for a team. I'm happiest when I can build the system, model the assets, and light the scene so it all works together.</p>
+          <p>Right now I'm working on team projects for Workshop and Casual Game Production alongside my own project, Station. I check in with leads before making changes, and I write modular, optimized, well-commented code so teammates can pick it up without me.</p>
           <dl class="stat-block">
             <dt>Tools</dt>
-            <dd>Unity, Unreal Engine, Unity, Blender, Substance Painter</dd>
+            <dd>Unity, Unreal Engine, Blender, Substance Painter</dd>
             <dt>Focus areas</dt>
-            <dd>Programming and implementing features, lighting, 3D prop modeling, asset creation.</dd>
+            <dd>Gameplay and systems programming, lighting, 3D prop modeling, asset creation</dd>
             <dt>Currently</dt>
-            <dd>Open to part-time and full-time roles, remote or Orlando based</dd>
+            <dd>Open to part-time and full-time roles, remote or Orlando-based</dd>
           </dl>
         </div>
       </div>
@@ -686,24 +373,24 @@
   <section id="contact">
     <div class="wrap">
       <h2 class="section-title">Contact</h2>
-      <p class="section-sub">Best way to reach me is email — I read everything.</p>
+      <p class="section-sub">Email is the best way to reach me. I read and answer every message.</p>
       <ul class="contact-list">
         <li>
           <a href="mailto:xavierrosariotorres@gmail.com">
             <span class="contact-label">Email</span>
-            <span class="contact-value">xavierrosariotorres@gmail.com <span class="arrow">↗</span></span>
+            <span class="contact-value">xavierrosariotorres@gmail.com <span class="arrow" aria-hidden="true">↗</span></span>
           </a>
         </li>
         <li>
           <a href="https://www.linkedin.com/in/xavier-rosario-techartist" target="_blank" rel="noopener">
             <span class="contact-label">LinkedIn</span>
-            <span class="contact-value">linkedin.com/in/xavier-rosario-techartist <span class="arrow">↗</span></span>
+            <span class="contact-value">linkedin.com/in/xavier-rosario-techartist <span class="arrow" aria-hidden="true">↗</span></span>
           </a>
         </li>
         <li>
           <a href="Rosario_Resume.pdf" download="Rosario_Resume.pdf">
             <span class="contact-label">Resume</span>
-            <span class="contact-value">Download PDF <span class="arrow">↓</span></span>
+            <span class="contact-value">Download PDF <span class="arrow" aria-hidden="true">↓</span></span>
           </a>
         </li>
       </ul>
@@ -714,7 +401,7 @@
 <footer>
   <div class="wrap">
     <span>©2026 Xavier Rosario Torres</span>
-    <span>Back to top ↑</span>
+    <a href="#top">Back to top ↑</a>
   </div>
 </footer>
 
