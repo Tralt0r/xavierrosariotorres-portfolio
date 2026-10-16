@@ -66,6 +66,17 @@
   summary.entry-head { list-style: none; cursor: pointer; padding: 18px 20px; display: flex; align-items: center; gap: 16px; }
   summary.entry-head::-webkit-details-marker { display: none; }
   .entry-no { font-size: 0.85rem; color: var(--accent-2); flex-shrink: 0; width: 2.6em; }
+  .entry-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
+  details.entry { margin-bottom: 0; }
+  details.entry[open] { grid-column: 1 / -1; }
+  summary.entry-head { display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: "thumb thumb thumb" "no titles caret"; align-items: start; gap: 12px 10px; padding: 12px 14px 16px; }
+  .entry-thumb { grid-area: thumb; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--line); border-radius: 3px; display: block; }
+  .entry-no { grid-area: no; width: auto; }
+  .entry-titles { grid-area: titles; }
+  .entry-caret { grid-area: caret; }
+  details.entry[open] summary.entry-head { grid-template-columns: 104px auto 1fr auto; grid-template-areas: "thumb no titles caret"; align-items: center; padding: 14px 18px; }
+  @media (max-width: 820px) { .entry-list { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .entry-list { grid-template-columns: 1fr; } details.entry[open] summary.entry-head { grid-template-columns: 72px auto 1fr auto; } }
   .entry-titles { flex: 1; min-width: 0; }
   .entry-titles h3 { margin: 0 0 4px; font-size: 1.15rem; font-weight: 600; }
   .entry-titles p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
@@ -87,9 +98,11 @@
   .portrait { aspect-ratio: 1; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--card); }
   .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .about-text p { max-width: 64ch; margin-top: 0; }
-  .stat-block { margin: 22px 0 0; border-top: 1px solid var(--line); padding-top: 16px; }
+  section.snapshot { padding: 32px 0; border-bottom: 1px solid var(--line); background: var(--card); }
+  .stat-block { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .stat-block dt { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--accent-2); margin: 0 0 6px; }
-  .stat-block dd { margin: 0 0 14px; color: var(--ink-soft); }
+  .stat-block dd { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+  @media (max-width: 700px) { .stat-block { grid-template-columns: 1fr; gap: 18px; } }
   @media (max-width: 560px) { .about-grid { grid-template-columns: 1fr; } .portrait { width: 140px; } .nav-links { gap: 14px; } }
 
   #contact { padding-bottom: 80px; }
@@ -140,14 +153,35 @@
     </div>
   </section>
 
+  <section class="snapshot" aria-label="Skills and availability">
+    <div class="wrap">
+      <dl class="stat-block">
+        <div>
+          <dt>Tools</dt>
+          <dd>Unity, Unreal Engine, Blender, Substance Painter</dd>
+        </div>
+        <div>
+          <dt>Focus areas</dt>
+          <dd>Gameplay and systems programming, lighting, 3D prop modeling, asset creation</dd>
+        </div>
+        <div>
+          <dt>Currently</dt>
+          <dd>Open to part-time and full-time roles, remote or Orlando-based</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
   <section id="work">
     <div class="wrap">
       <h2 class="section-title">Selected work</h2>
       <p class="section-sub">Team projects I helped ship, solo projects I built end to end, and prototypes I used to test ideas. Each entry says what I owned and what it taught me.</p>
 
+      <div class="entry-list">
       <details class="entry">
         <summary class="entry-head">
           <span class="entry-no mono">01</span>
+          <img class="entry-thumb" src="understaffed-art-a.png" alt="" loading="lazy">
           <span class="entry-titles">
             <h3>Under Staffed</h3>
             <p>Team of 7 · fast-paced workplace management game</p>
@@ -177,6 +211,7 @@
       <details class="entry">
         <summary class="entry-head">
           <span class="entry-no mono">02</span>
+          <img class="entry-thumb" src="soundsmith-art-a.png" alt="" loading="lazy">
           <span class="entry-titles">
             <h3>Sound Smith</h3>
             <p>Small team · action rhythm game</p>
@@ -206,6 +241,7 @@
       <details class="entry">
         <summary class="entry-head">
           <span class="entry-no mono">03</span>
+          <img class="entry-thumb" src="station-art-a.png" alt="" loading="lazy">
           <span class="entry-titles">
             <h3>Station</h3>
             <p>Solo project · procedural multiplayer extraction horror, in development</p>
@@ -245,6 +281,7 @@
       <details class="entry">
         <summary class="entry-head">
           <span class="entry-no mono">04</span>
+          <img class="entry-thumb" src="shift-art-a.png" alt="" loading="lazy">
           <span class="entry-titles">
             <h3>Shift</h3>
             <p>Solo project · gravity-switching first-person arena shooter</p>
@@ -279,6 +316,7 @@
       <details class="entry">
         <summary class="entry-head">
           <span class="entry-no mono">05</span>
+          <img class="entry-thumb" src="cs_art_a.png" alt="" loading="lazy">
           <span class="entry-titles">
             <h3>Cyber Scanners</h3>
             <p>Solo project · tower defense game</p>
@@ -312,6 +350,7 @@
       <details class="entry">
         <summary class="entry-head">
           <span class="entry-no mono">06</span>
+          <img class="entry-thumb" src="misc-file-a.png" alt="" loading="lazy">
           <span class="entry-titles">
             <h3>Miscellaneous</h3>
             <p>Solo experiments · models, animation, texturing, VFX, and code</p>
@@ -345,6 +384,7 @@
           </div>
         </div>
       </details>
+      </div>
     </div>
   </section>
 
@@ -357,14 +397,6 @@
           <p>I've been taking games apart to see how they work since I was young. I started with tutorials and solo experiments, and the project that taught me the most was Shift. It was far out of scope, and that gap taught me what actually matters in game design: a clear core mechanic, honest scoping, and finishing what you start. I apply those lessons to every project now.</p>
           <p>I'm a Digital Media student at the University of Central Florida, graduating in Spring 2027. Along the way I found technical art, which sits between modeling and programming and lets me do the most for a team. I'm happiest when I can build the system, model the assets, and light the scene so it all works together.</p>
           <p>Right now I'm working on team projects for Workshop and Casual Game Production alongside my own project, Station. I check in with leads before making changes, and I write modular, optimized, well-commented code so teammates can pick it up without me.</p>
-          <dl class="stat-block">
-            <dt>Tools</dt>
-            <dd>Unity, Unreal Engine, Blender, Substance Painter</dd>
-            <dt>Focus areas</dt>
-            <dd>Gameplay and systems programming, lighting, 3D prop modeling, asset creation</dd>
-            <dt>Currently</dt>
-            <dd>Open to part-time and full-time roles, remote or Orlando-based</dd>
-          </dl>
         </div>
       </div>
     </div>
