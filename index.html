@@ -66,6 +66,21 @@
   summary.entry-head { list-style: none; cursor: pointer; padding: 18px 20px; display: flex; align-items: center; gap: 16px; }
   summary.entry-head::-webkit-details-marker { display: none; }
   .entry-no { font-size: 0.85rem; color: var(--accent-2); flex-shrink: 0; width: 2.6em; }
+  .media-slot img { cursor: zoom-in; }
+  dialog.lightbox { border: 0; padding: 0; margin: 0; width: 100%; height: 100%; max-width: 100vw; max-height: 100vh; background: transparent; color: #fff; }
+  dialog.lightbox::backdrop { background: rgba(0, 0, 0, 0.92); }
+  dialog.lightbox[open] { display: flex; align-items: center; justify-content: center; cursor: zoom-out; }
+  .lightbox img { max-width: 96vw; max-height: 92vh; width: auto; height: auto; object-fit: contain; border-radius: 2px; }
+  .lb-btn { position: fixed; background: rgba(0, 0, 0, 0.55); color: #fff; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 3px; width: 44px; height: 44px; font-size: 1.3rem; line-height: 1; cursor: pointer; font-family: "IBM Plex Mono", monospace; }
+  .lb-btn:hover, .lb-btn:focus-visible { background: rgba(255, 255, 255, 0.2); }
+  .lb-close { top: calc(12px + env(safe-area-inset-top, 0px)); right: 12px; }
+  .lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
+  [hidden] { display: none !important; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .filter { font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; padding: 6px 14px; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--ink-soft); cursor: pointer; }
+  .filter:hover { color: var(--ink); border-color: var(--ink-soft); }
+  .filter[aria-pressed="true"] { background: var(--accent-2); border-color: var(--accent-2); color: var(--paper); }
   .entry-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
   details.entry { margin-bottom: 0; }
   details.entry[open] { grid-column: 1 / -1; }
@@ -177,70 +192,16 @@
       <h2 class="section-title">Selected work</h2>
       <p class="section-sub">Team projects I helped ship, solo projects I built end to end, and prototypes I used to test ideas. Each entry says what I owned and what it taught me.</p>
 
+      <div class="filters" role="group" aria-label="Filter projects by discipline">
+        <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter" data-filter="design" aria-pressed="false">Design</button>
+        <button type="button" class="filter" data-filter="modeling" aria-pressed="false">Modeling</button>
+        <button type="button" class="filter" data-filter="programming" aria-pressed="false">Programming</button>
+      </div>
       <div class="entry-list">
-      <details class="entry">
+      <details class="entry" data-cats="design modeling programming">
         <summary class="entry-head">
           <span class="entry-no mono">01</span>
-          <img class="entry-thumb" src="understaffed-art-a.png" alt="" loading="lazy">
-          <span class="entry-titles">
-            <h3>Under Staffed</h3>
-            <p>Team of 7 · fast-paced workplace management game</p>
-          </span>
-          <span class="entry-caret mono" aria-hidden="true">+</span>
-        </summary>
-        <div class="entry-body">
-          <div class="tags">
-            <span class="tag">Gameplay Programming</span>
-            <span class="tag">UI / UX</span>
-            <span class="tag">Unity / C#</span>
-          </div>
-          <div class="media-strip">
-            <div class="media-slot full"><video src="understaffed-programming-a.mp4" controls muted playsinline preload="metadata" aria-label="Under Staffed gameplay and systems demo"></video></div>
-            <div class="media-slot"><img src="understaffed-art-a.png" alt="Under Staffed concept art, image 1" loading="lazy"></div>
-            <div class="media-slot"><img src="understaffed-art-b.png" alt="Under Staffed concept art, image 2" loading="lazy"></div>
-            <div class="media-slot"><img src="understaffed-art-c.png" alt="Under Staffed concept art, image 3" loading="lazy"></div>
-            <div class="media-slot"><img src="understaffed-art-d.png" alt="Under Staffed concept art, image 4" loading="lazy"></div>
-          </div>
-          <div class="entry-desc">
-            <p><strong>The game</strong>You run a chronically understaffed business and have to juggle workers, stations, and customers to keep everyone happy and keep your job.</p>
-            <p><strong>My role</strong>I built the core worker system: drag-and-drop worker control, area assignment, and the behavior for every work station. I also owned the timer system, the interaction system, scripted UI elements, and the door system. These are the systems the whole game loop depends on, so I wrote them to be modular enough for teammates to build on.</p>
-          </div>
-        </div>
-      </details>
-
-      <details class="entry">
-        <summary class="entry-head">
-          <span class="entry-no mono">02</span>
-          <img class="entry-thumb" src="soundsmith-art-a.png" alt="" loading="lazy">
-          <span class="entry-titles">
-            <h3>Sound Smith</h3>
-            <p>Small team · action rhythm game</p>
-          </span>
-          <span class="entry-caret mono" aria-hidden="true">+</span>
-        </summary>
-        <div class="entry-body">
-          <div class="tags">
-            <span class="tag">Gameplay Programming</span>
-            <span class="tag">Audio Implementation</span>
-            <span class="tag">Unity / C#</span>
-          </div>
-          <div class="media-strip">
-            <div class="media-slot full"><video src="soundsmith-programming-a.mp4" controls muted playsinline preload="metadata" aria-label="Sound Smith gameplay and systems demo"></video></div>
-            <div class="media-slot"><img src="soundsmith-art-a.png" alt="Sound Smith concept art, image 1" loading="lazy"></div>
-            <div class="media-slot"><img src="soundsmith-art-b.png" alt="Sound Smith concept art, image 2" loading="lazy"></div>
-            <div class="media-slot"><img src="soundsmith-art-c.png" alt="Sound Smith concept art, image 3" loading="lazy"></div>
-            <div class="media-slot"><img src="soundsmith-art-d.png" alt="Sound Smith concept art, image 4" loading="lazy"></div>
-          </div>
-          <div class="entry-desc">
-            <p><strong>The game</strong>Players collect ingredients through rhythm minigames, then fight bosses to earn the right to return home and craft legendary instruments.</p>
-            <p><strong>My role</strong>I built the workstation randomization system, the inspect system, the save system, and the boss battle logic. I also updated prefab logic across the project, implemented about 90% of the sound effects, and added an in-world shelf. Since the game runs on rhythm, I treated audio implementation as gameplay work rather than polish.</p>
-          </div>
-        </div>
-      </details>
-
-      <details class="entry">
-        <summary class="entry-head">
-          <span class="entry-no mono">03</span>
           <img class="entry-thumb" src="station-art-a.png" alt="" loading="lazy">
           <span class="entry-titles">
             <h3>Station</h3>
@@ -278,9 +239,9 @@
         </div>
       </details>
 
-      <details class="entry">
+      <details class="entry" data-cats="design programming">
         <summary class="entry-head">
-          <span class="entry-no mono">04</span>
+          <span class="entry-no mono">02</span>
           <img class="entry-thumb" src="shift-art-a.png" alt="" loading="lazy">
           <span class="entry-titles">
             <h3>Shift</h3>
@@ -313,7 +274,67 @@
         </div>
       </details>
 
-      <details class="entry">
+      <details class="entry" data-cats="design programming">
+        <summary class="entry-head">
+          <span class="entry-no mono">03</span>
+          <img class="entry-thumb" src="understaffed-art-a.png" alt="" loading="lazy">
+          <span class="entry-titles">
+            <h3>Under Staffed</h3>
+            <p>Team of 7 · fast-paced workplace management game</p>
+          </span>
+          <span class="entry-caret mono" aria-hidden="true">+</span>
+        </summary>
+        <div class="entry-body">
+          <div class="tags">
+            <span class="tag">Gameplay Programming</span>
+            <span class="tag">UI / UX</span>
+            <span class="tag">Unity / C#</span>
+          </div>
+          <div class="media-strip">
+            <div class="media-slot full"><video src="understaffed-programming-a.mp4" controls muted playsinline preload="metadata" aria-label="Under Staffed gameplay and systems demo"></video></div>
+            <div class="media-slot"><img src="understaffed-art-a.png" alt="Under Staffed concept art, image 1" loading="lazy"></div>
+            <div class="media-slot"><img src="understaffed-art-b.png" alt="Under Staffed concept art, image 2" loading="lazy"></div>
+            <div class="media-slot"><img src="understaffed-art-c.png" alt="Under Staffed concept art, image 3" loading="lazy"></div>
+            <div class="media-slot"><img src="understaffed-art-d.png" alt="Under Staffed concept art, image 4" loading="lazy"></div>
+          </div>
+          <div class="entry-desc">
+            <p><strong>The game</strong>You run a chronically understaffed business and have to juggle workers, stations, and customers to keep everyone happy and keep your job.</p>
+            <p><strong>My role</strong>I built the core worker system: drag-and-drop worker control, area assignment, and the behavior for every work station. I also owned the timer system, the interaction system, scripted UI elements, and the door system. These are the systems the whole game loop depends on, so I wrote them to be modular enough for teammates to build on.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="entry" data-cats="programming">
+        <summary class="entry-head">
+          <span class="entry-no mono">04</span>
+          <img class="entry-thumb" src="soundsmith-art-a.png" alt="" loading="lazy">
+          <span class="entry-titles">
+            <h3>Sound Smith</h3>
+            <p>Small team · action rhythm game</p>
+          </span>
+          <span class="entry-caret mono" aria-hidden="true">+</span>
+        </summary>
+        <div class="entry-body">
+          <div class="tags">
+            <span class="tag">Gameplay Programming</span>
+            <span class="tag">Audio Implementation</span>
+            <span class="tag">Unity / C#</span>
+          </div>
+          <div class="media-strip">
+            <div class="media-slot full"><video src="soundsmith-programming-a.mp4" controls muted playsinline preload="metadata" aria-label="Sound Smith gameplay and systems demo"></video></div>
+            <div class="media-slot"><img src="soundsmith-art-a.png" alt="Sound Smith concept art, image 1" loading="lazy"></div>
+            <div class="media-slot"><img src="soundsmith-art-b.png" alt="Sound Smith concept art, image 2" loading="lazy"></div>
+            <div class="media-slot"><img src="soundsmith-art-c.png" alt="Sound Smith concept art, image 3" loading="lazy"></div>
+            <div class="media-slot"><img src="soundsmith-art-d.png" alt="Sound Smith concept art, image 4" loading="lazy"></div>
+          </div>
+          <div class="entry-desc">
+            <p><strong>The game</strong>Players collect ingredients through rhythm minigames, then fight bosses to earn the right to return home and craft legendary instruments.</p>
+            <p><strong>My role</strong>I built the workstation randomization system, the inspect system, the save system, and the boss battle logic. I also updated prefab logic across the project, implemented about 90% of the sound effects, and added an in-world shelf. Since the game runs on rhythm, I treated audio implementation as gameplay work rather than polish.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="entry" data-cats="programming">
         <summary class="entry-head">
           <span class="entry-no mono">05</span>
           <img class="entry-thumb" src="cs_art_a.png" alt="" loading="lazy">
@@ -347,7 +368,7 @@
         </div>
       </details>
 
-      <details class="entry">
+      <details class="entry" data-cats="modeling programming">
         <summary class="entry-head">
           <span class="entry-no mono">06</span>
           <img class="entry-thumb" src="misc-file-a.png" alt="" loading="lazy">
@@ -437,5 +458,59 @@
   </div>
 </footer>
 
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.filter');
+    var entries = document.querySelectorAll('details.entry');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.getAttribute('data-filter');
+        buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        entries.forEach(function (e) {
+          var show = f === 'all' || e.getAttribute('data-cats').split(' ').indexOf(f) !== -1;
+          e.hidden = !show;
+        });
+      });
+    });
+  })();
+</script>
+<dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+  <button type="button" class="lb-btn lb-close" aria-label="Close image">✕</button>
+  <button type="button" class="lb-btn lb-prev" aria-label="Previous image">‹</button>
+  <img src="" alt="">
+  <button type="button" class="lb-btn lb-next" aria-label="Next image">›</button>
+</dialog>
+<script>
+  (function () {
+    var dlg = document.getElementById('lightbox');
+    var big = dlg.querySelector('img');
+    var group = [], idx = 0;
+    function show(i) {
+      idx = (i + group.length) % group.length;
+      big.src = group[idx].currentSrc || group[idx].src;
+      big.alt = group[idx].alt;
+    }
+    function open(img) {
+      group = Array.prototype.slice.call(img.closest('.media-strip').querySelectorAll('img'));
+      show(group.indexOf(img));
+      dlg.showModal();
+    }
+    document.querySelectorAll('.media-slot img').forEach(function (img) {
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.addEventListener('click', function () { open(img); });
+      img.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+      });
+    });
+    dlg.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
+    dlg.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
+    dlg.addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
+    });
+  })();
+</script>
 </body>
 </html>
